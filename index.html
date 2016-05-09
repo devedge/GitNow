@@ -9,5 +9,24 @@
     We are using node <script>document.write(process.versions.node)</script>,
     Chrome <script>document.write(process.versions.chrome)</script>,
     and Electron <script>document.write(process.versions.electron)</script>.
+
+    <!-- Stuff to display example message -->
+    <br><br>
+    Enter example message:
+    <br>
+    <input type="text" id="exampleinput" value=""></input>
+    <br><br>
+    <button type="button" onclick="displayNotification()">Display Notification</button>
   </body>
+
+  <script type="text/javascript">
+    const notifier = require('node-notifier');
+
+    function displayNotification() {
+      notifier.notify({
+        'title': 'Custom Notification Header',
+        'message': document.getElementById("exampleinput").value
+      });
+    }
+  </script>
 </html>
