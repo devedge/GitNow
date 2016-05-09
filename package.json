@@ -1,7 +1,7 @@
 {
   "name": "gitnow",
   "version": "0.1.0",
-  "description": "A cross-platform Git notification app",
+  "description": "A cross-platform Github notification app",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
