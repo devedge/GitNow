@@ -1,5 +1,5 @@
 # GitNow
-A cross-platform Git notification app
+A cross-platform Github notification app
 
 ***
 
