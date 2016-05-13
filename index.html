@@ -12,6 +12,10 @@
 
     <!-- Stuff to display example message -->
     <br><br>
+    Enter example notification header:
+    <br>
+    <input type="text" id="notifhead" value=""></input>
+    <br><br>
     Enter example message:
     <br>
     <input type="text" id="exampleinput" value=""></input>
@@ -24,7 +28,7 @@
 
     function displayNotification() {
       notifier.notify({
-        'title': 'Custom Notification Header',
+        'title': document.getElementById("notifhead").value,
         'message': document.getElementById("exampleinput").value
       });
     }
