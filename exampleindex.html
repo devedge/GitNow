@@ -2,9 +2,10 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <title>GitNow</title>
   </head>
   <body>
+    <a href="./index.html">Back to main</a>
     <h1>Hello World!</h1>
     We are using node <script>document.write(process.versions.node)</script>,
     Chrome <script>document.write(process.versions.chrome)</script>,
@@ -21,18 +22,5 @@
     <input type="text" id="exampleinput" value=""></input>
     <br><br>
     <button type="button" onclick="displayNotification()">Display Notification</button>
-    <br>
-    <a href="./exampleindex.html">Example Homepage</a>
   </body>
-
-  <script type="text/javascript">
-    const notifier = require('node-notifier');
-
-    function displayNotification() {
-      notifier.notify({
-        'title': document.getElementById("notifhead").value,
-        'message': document.getElementById("exampleinput").value
-      });
-    }
-  </script>
 </html>
