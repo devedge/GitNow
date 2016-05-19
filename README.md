@@ -18,9 +18,10 @@ Go to:
 ## Dev Notes
 
   * Using `electron.atom.io v1.0.1` (http://electron.atom.io/)
-  * For cross-platform notifications: `node-notifier` (https://www.npmjs.com/package/node-notifier)
+  * <b>Cross-platform notifications:</b> `node-notifier` (https://www.npmjs.com/package/node-notifier)
+  * <b>Watch a repository:</b> `githubhook` (https://www.npmjs.com/package/githubhook)
   * Example electron-style application: `webtorrent.io` (https://webtorrent.io/)
-  * Electron.io examples and API application (https://github.com/electron/electron-api-demos)
+  * Electron.io API & tutorial application (https://github.com/electron/electron-api-demos)
   * npm modules imported: `electron-prebuilt`, `node-notifier`
   
 <br>
