@@ -8,5 +8,22 @@ To import and use the Materialize theme:
 
 2. Add these scripts to the end of the body:
 
+    <script type="text/javascript">
+      window.$ = window.jQuery = require('../styling/jquery/jquery-2.1.1.min.js');
+      window.Hammer = require('../styling/materialize/js/hammer.min.js');
+    </script>
+    <script type="text/javascript" src="../styling/materialize/js/materialize.min.js"></script>
+
+
+
+To import and use Bootstrap:
+1.
+
+
+
+
+
+2.
+
 
 
