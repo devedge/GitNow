@@ -18,3 +18,9 @@ Currently under development (check wiki)
   * Example electron-style application: `webtorrent.io` (https://webtorrent.io/)
   * Electron.io examples and API application (https://github.com/electron/electron-api-demos)
   
+<br><br>
+
+<h2>Program Flow</h2>
+
+  * When `npm start` is entered, the `main.js` is executed
+  * `main.js` starts the application and displays the homepage, `views/main.html`
