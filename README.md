@@ -17,6 +17,7 @@ Currently under development (check wiki)
   * For cross-platform notifications: `node-notifier` (https://www.npmjs.com/package/node-notifier)
   * Example electron-style application: `webtorrent.io` (https://webtorrent.io/)
   * Electron.io examples and API application (https://github.com/electron/electron-api-demos)
+  * npm modules imported: `electron-prebuilt`, `node-notifier`
   
 <br>
 
