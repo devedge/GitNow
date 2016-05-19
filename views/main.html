@@ -18,67 +18,13 @@
     <link type="text/css" rel="stylesheet" href="../styling/style.css"/>
 </head>
 <body>
-
-    <!-- Header stuff -->
-    <div class="navbar-fixed">
-        <nav>
-            <div class="nav-wrapper grey darken-1">
-                <!-- Left side elements -->
-
-                <!-- Right side elements -->
-                <ul class="right">
-                    <li><a href="#"><i class="material-icons right">settings</i></a></li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-
     <!-- Main container -->
     <div class="container">
 
-        <div class="row">
-            <div class="col s12">
-                <div class="card-panel blue lighten-3">
-                    <span class="black-text">Enter example notification header:</span>
-                    <br>
-                    <input type="text" id="notifhead" value=""></input>
-                    <br>
-                    <span class="black-text">Enter example message:</span>
-                    <br>
-                    <input type="text" id="exampleinput" value=""></input>
-                    <br>
-                    <button type="button" onclick="displayNotification()">Display the Custom Notification</button>
-                    <button type="button" onclick="displayGeneratedNotif()">Display Example Notification</button>
-                </div>
-            </div>
+        <div class="collection">
+            <a href="sui.html" class="collection-item">Semantic UI Theme</a>
+            <a href="m.html" class="collection-item">Materialize Theme</a>
         </div>
-
-        <div class="row">
-            <div class="col s12">
-                <div class="card-panel blue lighten-3">
-                    <div class="left">
-                        <!-- <img src="exampleicon.jpg"> -->
-                    </div>
-                    <div class="right">
-                        right text
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Stuff to display example message -->
-        <!-- <br><br>
-        Enter example notification header:
-        <br>
-        <input type="text" id="notifhead" value=""></input>
-        <br><br>
-        Enter example message:
-        <br>
-        <input type="text" id="exampleinput" value=""></input>
-        <br><br>
-        <button type="button" onclick="displayNotification()">Display Notification</button>
-        <br> -->
-        
     </div>
 
 
@@ -88,28 +34,5 @@
       window.Hammer = require('../styling/materialize/js/hammer.min.js');
     </script>
     <script type="text/javascript" src="../styling/materialize/js/materialize.min.js"></script>
-
-
-    <script type="text/javascript">
-        const notifier = require('node-notifier');
-        const path = require('path');
-
-        function displayNotification() {
-            notifier.notify({
-                title: document.getElementById("notifhead").value,
-                message: document.getElementById("exampleinput").value,
-                icon: path.join(__dirname, 'icon1.jpg')
-            });
-        }
-
-        function displayGeneratedNotif() {
-            notifier.notify({
-                title: "GitNow",
-                message: "Push - (mphayes2) - 5 Commits",
-                icon: path.join(__dirname, 'icon2.jpg')
-            });
-        }
-    </script>
-
 </body>
 </html>
