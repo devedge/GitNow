@@ -18,7 +18,7 @@ Currently under development (check wiki)
   * Example electron-style application: `webtorrent.io` (https://webtorrent.io/)
   * Electron.io examples and API application (https://github.com/electron/electron-api-demos)
   
-<br><br>
+<br>
 
 <h2>Program Flow</h2>
 
