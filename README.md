@@ -33,3 +33,16 @@ Go to:
 <br>
 
 ## Folder Organization
+
+ <i>Home directory</i>
+ * main.js
+ * package.json
+ * repo-watch
+   * <i>(code for watching repositories)</i>
+ * styling <i>(code for application styling)</i>
+    - style.css <i>(custom stylesheet for the application)</i>
+    - bootstrap <i>(bootstrap stylesheet stuff. optional, it's just here if we need to use something)</i>
+    - jquery <i>(to make the stylesheets work)</i>
+    - materialize <i>(the current application theme, but could be replaced)</i>
+
+
