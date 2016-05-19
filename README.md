@@ -9,9 +9,9 @@ To run after cloning the repository: <br>
 Currently under development (check wiki)
 <br>
 Go to:
-* [Dev Notes](dev-notes)
-* [Program Flow](program-flow)
-* [Folder Organization]()
+* [Dev Notes](#dev-notes)
+* [Program Flow](#program-flow)
+* [Folder Organization](#folder-organization)
 
 
 
@@ -25,7 +25,11 @@ Go to:
   
 <br>
 
-<h2>Program Flow</h2>
+## Program Flow
 
   * When `npm start` is entered, the `main.js` is executed
   * `main.js` starts the application and displays the homepage, `views/main.html`
+
+<br>
+
+## Folder Organization
