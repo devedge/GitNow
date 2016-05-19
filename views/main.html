@@ -39,6 +39,20 @@
 
     <!-- Main container -->
     <div class="container">
+
+        <!-- Stuff to display example message -->
+        <br><br>
+        Enter example notification header:
+        <br>
+        <input type="text" id="notifhead" value=""></input>
+        <br><br>
+        Enter example message:
+        <br>
+        <input type="text" id="exampleinput" value=""></input>
+        <br><br>
+        <button type="button" onclick="displayNotification()">Display Notification</button>
+        <br><br><br>
+        <a href="./exampleindex.html">View example Homepage</a>
         
     </div>
 
@@ -50,5 +64,17 @@
     </script>
     <script type="text/javascript" src="../styling/materialize/js/materialize.min.js"></script>
 
+
+    <script type="text/javascript">
+        const notifier = require('node-notifier');
+
+        function displayNotification() {
+            notifier.notify({
+                'title': document.getElementById("notifhead").value,
+                'message': document.getElementById("exampleinput").value
+            });
+        }
+    </script>
+  
 </body>
 </html>

@@ -17,13 +17,17 @@ To import and use the Materialize theme:
 
 
 To import and use Bootstrap:
-1.
+1. Add this in the head:
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
 
+2. Add these scripts to the end of the body:
 
-
-
-2.
-
-
-
+    <script type="text/javascript">
+      window.$ = window.jQuery = require('../styling/jquery/jquery-2.1.1.min.js');
+    </script>
+    <script src="js/bootstrap.min.js"></script>
