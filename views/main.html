@@ -47,12 +47,24 @@
                     <br>
                     <input type="text" id="exampleinput" value=""></input>
                     <br>
-                    <button type="button" onclick="displayNotification()">Display Notification</button>
+                    <button type="button" onclick="displayNotification()">Display the Custom Notification</button>
+                    <button type="button" onclick="displayGeneratedNotif()">Display Example Notification</button>
                 </div>
             </div>
         </div>
 
-
+        <div class="row">
+            <div class="col s12">
+                <div class="card-panel blue lighten-3">
+                    <div class="left">
+                        <!-- <img src="exampleicon.jpg"> -->
+                    </div>
+                    <div class="right">
+                        right text
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Stuff to display example message -->
         <!-- <br><br>
@@ -86,7 +98,15 @@
             notifier.notify({
                 title: document.getElementById("notifhead").value,
                 message: document.getElementById("exampleinput").value,
-                icon: path.join(__dirname, 'exampleicon.jpg')
+                icon: path.join(__dirname, 'icon1.jpg')
+            });
+        }
+
+        function displayGeneratedNotif() {
+            notifier.notify({
+                title: "GitNow",
+                message: "Push - (mphayes2) - 5 Commits",
+                icon: path.join(__dirname, 'icon2.jpg')
             });
         }
     </script>
