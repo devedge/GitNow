@@ -35,8 +35,8 @@ Go to:
 ## Folder Organization
 
  <i>Home directory</i>
- * main.js
- * package.json
+ * main.js <i>(Program start)</i>
+ * package.json <i>(Information about the application)</i>
  * repo-watch
    * <i>(code for watching repositories)</i>
  * styling <i>(code for application styling)</i>
