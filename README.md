@@ -7,7 +7,11 @@ To run after cloning the repository: <br>
 `npm install && npm start`
 <br><br>
 Currently under development (check wiki)
-
+<br>
+Go to:
+* [Dev Notes](dev-notes)
+* [Program Flow](program-flow)
+* [Folder Organization]()
 
 
 
