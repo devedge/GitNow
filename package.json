@@ -24,6 +24,7 @@
   "homepage": "https://github.com/devedge/GitNow#readme",
   "dependencies": {
     "electron-prebuilt": "^1.0.1",
+    "githubhook": "^1.6.1",
     "node-notifier": "^4.5.0"
   }
 }
