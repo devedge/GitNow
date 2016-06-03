@@ -1,55 +1,156 @@
 
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700,400italic);
 
-/* Start of changed nav bar height */
+@-webkit-keyframes spin {
+  
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
 
-nav {
-    height: 30px;
-    line-height: 30px;
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+  
 }
 
-nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
-    height: 30px;
-    line-height: 30px;
+@keyframes spin {
+  
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+  
 }
 
-nav .button-collapse i {
-    height: 30px;
-    line-height: 30px;
+body {
+  margin: 0;
+  background: #eee;
+  
+  font-family: "Roboto", sans-serif;
+  color: #333;
 }
 
-nav .brand-logo { 
-    font-size: 1.6rem; 
+.container {
+  width: 700px;
+  margin: 0 auto;
+  
+  padding: 0 32px;
+  box-sizing: border-box;
 }
 
-@media only screen and (min-width: 601px){
-    nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
-        height: 30px;
-        line-height: 30px;
-    }
+.card {
+  margin: 32px 0;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  background: white;
+  
+  width: 100%;
+  min-height: 80px;
+  
+  display: flex;
 }
 
-/* End of navbar css */
-
-
-@font-face {
-  font-family: 'Material Icons';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Material Icons'), local('MaterialIcons-Regular')/* , url(https://fonts.gstatic.com/s/materialicons/v16/2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2) format('woff2') */;
+.card .icon-container {
+  width: 80px;
+  
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.material-icons {
-  font-family: 'Material Icons';
+.card .description {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  
+  flex-direction: column;
+  flex-grow: 1;
+  flex-basis: 0;
+  
+  padding: 8px 8px 8px 0;
+}
+
+.card .description .name {
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
+.card .description .name span {
+  font-size: .6em;
   font-weight: normal;
-  font-style: normal;
-  font-size: 24px;
-  line-height: 1;
-  letter-spacing: normal;
-  text-transform: none;
+  font-style: italic;
+  
+  color: #bbb;
+}
+
+.loading-icon {
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  border: 0.25rem solid #ddd;
+  border-top-color: #333;
   display: inline-block;
-  white-space: nowrap;
-  word-wrap: normal;
-  direction: ltr;
-  -moz-font-feature-settings: 'liga';
-  -moz-osx-font-smoothing: grayscale;
+  margin: 0 8px;
+  
+  -webkit-animation-name: spin;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+  
+  animation-name: spin;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+.perpetuum-mobile {
+  -webkit-animation-timing-function: cubic-bezier(0.55, 0.15, 0.45, 0.85);
+  animation-timing-function: cubic-bezier(0.55, 0.15, 0.45, 0.85);
+}
+
+.impetus {
+  -webkit-animation-timing-function: cubic-bezier(0.5, -0.35, 0.5, 1.35);
+  animation-timing-function: cubic-bezier(0.5, -0.35, 0.5, 1.35);
+}
+
+.full-circle {
+  -webkit-animation-timing-function: cubic-bezier(0.6, 0, 0.4, 1);
+  animation-timing-function: cubic-bezier(0.6, 0, 0.4, 1);
+}
+
+.gravity {
+  -webkit-animation-timing-function: cubic-bezier(0.5, 0.8, 0.5, 0.2);
+  animation-timing-function: cubic-bezier(0.5, 0.8, 0.5, 0.2);
+}
+
+.overshot {
+  -webkit-animation-timing-function: cubic-bezier(0.65, 1.5, 0.6, 0.95);
+  animation-timing-function: cubic-bezier(0.65, 1.5, 0.6, 0.95);
+}
+
+.downhill {
+  -webkit-animation-timing-function: cubic-bezier(0.3, 0.1, 0.3, 0.85);
+  animation-timing-function: cubic-bezier(0.3, 0.1, 0.3, 0.85);
+}
+
+.pendulum {
+  -webkit-animation-timing-function: cubic-bezier(0.3, 1.65, 0.7, -0.65);
+  animation-timing-function: cubic-bezier(0.3, 1.65, 0.7, -0.65);
+}
+
+.wtf {
+  -webkit-animation-timing-function: cubic-bezier(1, -2.3, 1, 2.5);
+  animation-timing-function: cubic-bezier(1, -2.3, 1, 2.5);
+}
+
+@media screen and (max-width: 700px) {
+  
+  .container {
+    width: 100%;
+  }
+  
 }

@@ -23,6 +23,8 @@ app.on('ready', function() {
   // Create the browser window.
   mainWindow = new BrowserWindow({width: 650, height: 700});
 
+  mainWindow.setAutoHideMenuBar(true);
+
   // and load the index.html of the app.
   mainWindow.loadURL('file://' + __dirname + '/views/main.html');  //index.html
 

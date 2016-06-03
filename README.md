@@ -3,7 +3,9 @@ A cross-platform Github notification app
 
 ***
 
-To run after cloning the repository: <br>
+[Developer information is in the wiki](https://github.com/devedge/GitNow/wiki)
+
+<!-- To run after cloning the repository: <br>
 `npm install && npm start`
 <br><br>
 Currently under development (check wiki)
@@ -44,6 +46,6 @@ Currently under development (check wiki)
     - style.css <i>(custom stylesheet for the application)</i>
     - bootstrap <i>(bootstrap stylesheet stuff. optional, it's just here if we need to use something)</i>
     - jquery <i>(to make the stylesheets work)</i>
-    - materialize <i>(the current application theme, but could be replaced)</i>
+    - materialize <i>(the current application theme, but could be replaced)</i> -->
 
 
