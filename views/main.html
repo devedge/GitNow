@@ -17,88 +17,214 @@
 
     <!-- custom css -->
     <link rel="stylesheet" type="text/css" href="../styling/style.css">
+
+    <!-- Photon css -->
+    <link rel="stylesheet" href="../styling/photon/css/photon.css">
 </head>
 <body>
 
-<div class="container">
-  <div class="card">
-    <div class="icon-container">
-      <div class="loading-icon perpetuum-mobile"></div>
+    <div class="window">
+
+        <!-- .toolbar-header sits at the top of your app -->
+        <!-- <header class="toolbar">
+            <div align="center">asdf</div>
+        </header> -->
+
+<header class="toolbar toolbar-header">
+  <h1 class="title">Header with actions</h1>
+
+  <div class="toolbar-actions">
+    <div class="btn-group">
+      <button class="btn btn-default">
+        <span class="icon icon-home"></span>
+      </button>
+      <button class="btn btn-default">
+        <span class="icon icon-folder"></span>
+      </button>
+      <button class="btn btn-default active">
+        <span class="icon icon-cloud"></span>
+      </button>
+      <button class="btn btn-default">
+        <span class="icon icon-popup"></span>
+      </button>
+      <button class="btn btn-default">
+        <span class="icon icon-shuffle"></span>
+      </button>
     </div>
-    <div class="description">
-      <div class="name">Perpetuum Mobile</div>
-      <code>cubic-bezier(0.55, 0.15, 0.45, 0.85)</code>
-    </div>
+
+    <button class="btn btn-default">
+      <span class="icon icon-home icon-text"></span>
+      Filters
+    </button>
+
+    <button class="btn btn-default btn-dropdown pull-right">
+      <span class="icon icon-megaphone"></span>
+    </button>
   </div>
-  <div class="card">
-    <div class="icon-container">
-      <div class="loading-icon impetus"></div>
-    </div>
-    <div class="description">
-      <div class="name">Impetus</div>
-      <code>cubic-bezier(0.5, -0.35, 0.5, 1.35)</code>
-    </div>
-  </div>
-  <div class="card">
-    <div class="icon-container">
-      <div class="loading-icon full-circle"></div>
-    </div>
-    <div class="description">
-      <div class="name">Full Circle</div>
-      <code>cubic-bezier(0.6, 0, 0.4, 1)</code>
-    </div>
-  </div>
-  <div class="card">
-    <div class="icon-container">
-      <div class="loading-icon gravity"></div>
-    </div>
-    <div class="description">
-      <div class="name">Gravity</div>
-      <code>cubic-bezier(0.5, 0.8, 0.5, 0.2)</code>
-    </div>
-  </div>
-  <div class="card">
-    <div class="icon-container">
-      <div class="loading-icon overshot"></div>
-    </div>
-    <div class="description">
-      <div class="name">Overshot</div>
-      <code>cubic-bezier(0.65, 1.5, 0.6, 0.95)</code>
-    </div>
-  </div>
-  <div class="card">
-    <div class="icon-container">
-      <div class="loading-icon downhill"></div>
-    </div>
-    <div class="description">
-      <div class="name">Downhill Is Always Easier</div>
-      <code>cubic-bezier(0.3, 0.1, 0.3, 0.85)</code>
-    </div>
-  </div>
-  <div class="card">
-    <div class="icon-container">
-      <div class="loading-icon pendulum"></div>
-    </div>
-    <div class="description">
-      <div class="name">Pendulum</div>
-      <code>cubic-bezier(0.3, 1.65, 0.7, -0.65)</code>
-    </div>
-  </div>
-  <div class="card">
-    <div class="icon-container">
-      <div class="loading-icon wtf"></div>
-    </div>
-    <div class="description">
-      <div class="name">WTF <span>don't actually use this one :P</span></div>
-      <code>cubic-bezier(1, -2.3, 1, 2.5)</code>
-    </div>
-  </div>
-</div>
+</header>
 
 
 
-    <!-- Materialize JS imports -->
-    
+
+
+
+
+
+
+
+
+
+        <!-- Your app's content goes inside .window-content -->
+        <div class="window-content">
+            <!-- <div class="pane-group">
+            <div class="pane-mini sidebar">
+            <div class="padded-more">Mini</div>
+            </div>
+            <div class="pane"> -->
+            <div class="pane">
+                <div class="padded-more">
+
+                    <!-- <h1>Welcome to Photon</h1>
+                    <p>
+                    Thanks for downloading Photon. This is an example HTML page that's linked up to compiled Photon CSS, has the proper meta tags
+                    and the HTML structure.
+                    </p><br> -->
+
+                    <!-- <ul class="list-group">
+                        <li class="list-group-item">
+                            <img class="img-circle media-object pull-left" src="icon1.jpg" width="32" height="32">
+                            <div class="media-body">
+                                <strong>List item title</strong>
+                                <p>Lorem ipsum dolor sit amet.</p>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <img class="img-circle media-object pull-left" src="icon1.jpg" width="32" height="32">
+                            <div class="media-body">
+                                <strong>List item title</strong>
+                                <p>Lorem ipsum dolor sit amet.</p>
+                            </div>
+                        </li>
+                    </ul> -->
+
+                    <div class="card">
+                        <div class="icon-container">
+                            <img class="img-circle media-object pull-left" src="icon1.jpg" width="48" height="48">
+                          <!-- <div class="loading-icon perpetuum-mobile"></div> -->
+                        </div>
+                        <div class="description">
+                          <div class="name">GitNow</div>
+                          <!-- <p> A cross-platform Github notification app<br> -->
+                          <code><i>https://github.com/devedge/GitNow</i></code>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="icon-container">
+                            <img class="img-circle media-object pull-left" src="icon1.jpg" width="48" height="48">
+                          <!-- <div class="loading-icon perpetuum-mobile"></div> -->
+                        </div>
+                        <div class="description">
+                          <div class="name">merkle-tree-gen</div>
+                          <!-- <p> A cross-platform Github notification app<br> -->
+                          <code><i>https://github.com/devedge/merkle-tree-gen</i></code>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div align="center" class="description">
+                            <button>click</button>
+                            <i>Add a repository</i>
+                        </div>
+                        <!-- <div class="icon-container">
+                            <img class="img-circle media-object pull-left" src="icon1.jpg" width="16" height="16">
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- <div class="container">
+      <div class="card">
+        <div class="icon-container">
+          <div class="loading-icon perpetuum-mobile"></div>
+        </div>
+        <div class="description">
+          <div class="name">Perpetuum Mobile</div>
+          <code>cubic-bezier(0.55, 0.15, 0.45, 0.85)</code>
+        </div>
+      </div>
+      <div class="card">
+        <div class="icon-container">
+          <div class="loading-icon impetus"></div>
+        </div>
+        <div class="description">
+          <div class="name">Impetus</div>
+          <code>cubic-bezier(0.5, -0.35, 0.5, 1.35)</code>
+        </div>
+      </div>
+      <div class="card">
+        <div class="icon-container">
+          <div class="loading-icon full-circle"></div>
+        </div>
+        <div class="description">
+          <div class="name">Full Circle</div>
+          <code>cubic-bezier(0.6, 0, 0.4, 1)</code>
+        </div>
+      </div>
+      <div class="card">
+        <div class="icon-container">
+          <div class="loading-icon gravity"></div>
+        </div>
+        <div class="description">
+          <div class="name">Gravity</div>
+          <code>cubic-bezier(0.5, 0.8, 0.5, 0.2)</code>
+        </div>
+      </div>
+      <div class="card">
+        <div class="icon-container">
+          <div class="loading-icon overshot"></div>
+        </div>
+        <div class="description">
+          <div class="name">Overshot</div>
+          <code>cubic-bezier(0.65, 1.5, 0.6, 0.95)</code>
+        </div>
+      </div>
+      <div class="card">
+        <div class="icon-container">
+          <div class="loading-icon downhill"></div>
+        </div>
+        <div class="description">
+          <div class="name">Downhill Is Always Easier</div>
+          <code>cubic-bezier(0.3, 0.1, 0.3, 0.85)</code>
+        </div>
+      </div>
+      <div class="card">
+        <div class="icon-container">
+          <div class="loading-icon pendulum"></div>
+        </div>
+        <div class="description">
+          <div class="name">Pendulum</div>
+          <code>cubic-bezier(0.3, 1.65, 0.7, -0.65)</code>
+        </div>
+      </div>
+      <div class="card">
+        <div class="icon-container">
+          <div class="loading-icon wtf"></div>
+        </div>
+        <div class="description">
+          <div class="name">WTF <span>don't actually use this one :P</span></div>
+          <code>cubic-bezier(1, -2.3, 1, 2.5)</code>
+        </div>
+      </div>
+    </div>
+-->
+
+
+<!-- Materialize JS imports -->
+
 
 </body>
 </html>
