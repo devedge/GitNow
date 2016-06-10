@@ -1,0 +1,21 @@
+
+user can pass info with:
+1. full url
+2. username & reponame
+3. by copy-pasting the git url (eg,: https://github.com/jpmonette/feed.git)
+
+
+find out how to poll/watch the feed
+
+once something new has happened, use a parser to extract 
+relevant info & call the notification library
+
+display the notification with the info
+
+once displayed, save the lastest commit hash, date, and other stuff? to a JSON file
+
+on startup
+option 1: find out how many notifications were missed and display that as a notification
+option 2: silently find out how farr behind we are, but only display new notifications (no info about ones we've missed)
+
+
