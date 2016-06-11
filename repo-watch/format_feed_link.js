@@ -11,6 +11,10 @@
 
     function FeedFormat() {
         // maybe some setup stuff here
+        // 
+        // this can be instantiated with: "var feedformat = new FeedFormat();"
+        // and then the 'init()' function can be called to re-initialize the
+        // variables for each repo
     }
 
     FeedFormat.prototype.init = function init(argument) {
