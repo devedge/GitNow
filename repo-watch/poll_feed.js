@@ -25,4 +25,4 @@
     // maybe do some kind of callback or event emitter so that the notification
     // library can be called
 
-});
+})();

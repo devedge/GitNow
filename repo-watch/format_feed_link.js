@@ -45,4 +45,4 @@
     // Allow this module to be exported and used
     module.exports = FeedFormat;
 
-});
+})();
