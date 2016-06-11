@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/devedge/GitNow/commits/master</id>
+  <link type="text/html" rel="alternate" href="https://github.com/devedge/GitNow/commits/master"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/devedge/GitNow/commits/master.atom"/>
+  <title>Recent Commits to GitNow:master</title>
+  <updated>2016-06-10T17:28:00-04:00</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/564a5a77a1e86d8ac4f9181efba82d5a0201bd5c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/devedge/GitNow/commit/564a5a77a1e86d8ac4f9181efba82d5a0201bd5c"/>
+    <title>
+        Started work on RSS poller
+    </title>
+    <updated>2016-06-10T17:28:00-04:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/16330401?v=3&amp;s=30"/>
+    <author>
+      <name>devedge</name>
+      <uri>https://github.com/devedge</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Started work on RSS poller&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/99f97ca4708f14d2dc1a4be8f067419514301aa7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/devedge/GitNow/commit/99f97ca4708f14d2dc1a4be8f067419514301aa7"/>
+    <title>
+        added the photon gui kit
+    </title>
+    <updated>2016-06-06T18:42:44-04:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/16330401?v=3&amp;s=30"/>
+    <author>
+      <name>devedge</name>
+      <uri>https://github.com/devedge</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>added the photon gui kit&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8f4e32237a0d01871a72756baa91e22bcc102592</id>
+    <link type="text/html" rel="alternate" href="https://github.com/devedge/GitNow/commit/8f4e32237a0d01871a72756baa91e22bcc102592"/>
+    <title>
+        still messing with css styling
+    </title>
+    <updated>2016-06-06T18:41:55-04:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/16330401?v=3&amp;s=30"/>
+    <author>
+      <name>devedge</name>
+      <uri>https://github.com/devedge</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>still messing with css styling&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3b2f507e7a7b0c1eee64362e918e063c53c282b4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/devedge/GitNow/commit/3b2f507e7a7b0c1eee64362e918e063c53c282b4"/>
+    <title>
+        Actually added new changes
+    </title>
+    <updated>2016-06-03T00:39:04-04:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/16330401?v=3&amp;s=30"/>
+    <author>
+      <name>devedge</name>
+      <uri>https://github.com/devedge</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Actually added new changes&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bcad5a27bb8eb905c53e0d3f4561fc138baf00c0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/devedge/GitNow/commit/bcad5a27bb8eb905c53e0d3f4561fc138baf00c0"/>
+    <title>
+        Fixed buttons
+    </title>
+    <updated>2016-05-26T12:39:45-04:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/16330401?v=3&amp;s=30"/>
+    <author>
+      <name>devedge</name>
+      <uri>https://github.com/devedge</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Fixed buttons&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/89a90028d9f996145d0a3e54ce05754319e67c9a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/devedge/GitNow/commit/89a90028d9f996145d0a3e54ce05754319e67c9a"/>
+    <title>
+        Merge branch &#39;master&#39; of https://github.com/devedge/GitNow
+    </title>
+    <updated>2016-05-26T12:36:17-04:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/16330401?v=3&amp;s=30"/>
+    <author>
+      <name>devedge</name>
+      <uri>https://github.com/devedge</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Merge branch &#39;master&#39; of https://github.com/devedge/GitNow
+
+Casdfsadf&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4d4deb58e4e8f3ec16a4247c3c23e0b93d3a4036</id>
+    <link type="text/html" rel="alternate" href="https://github.com/devedge/GitNow/commit/4d4deb58e4e8f3ec16a4247c3c23e0b93d3a4036"/>
+    <title>
+        uncommented notification html
+    </title>
+    <updated>2016-05-26T12:35:45-04:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/16330401?v=3&amp;s=30"/>
+    <author>
+      <name>devedge</name>
+      <uri>https://github.com/devedge</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>uncommented notification html&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0a64693ed82434d1bba9860501837fdb8ddd4e3a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/devedge/GitNow/commit/0a64693ed82434d1bba9860501837fdb8ddd4e3a"/>
+    <title>
+        Update README.md
+    </title>
+    <updated>2016-05-21T03:28:11-04:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/16330401?v=3&amp;s=30"/>
+    <author>
+      <name>devedge</name>
+      <uri>https://github.com/devedge</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Update README.md&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f259ebc2998cb0d3258408400be05950c4ba4d29</id>
+    <link type="text/html" rel="alternate" href="https://github.com/devedge/GitNow/commit/f259ebc2998cb0d3258408400be05950c4ba4d29"/>
+    <title>
+        set proper main index page
+    </title>
+    <updated>2016-05-20T14:44:23-04:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/16330401?v=3&amp;s=30"/>
+    <author>
+      <name>devedge</name>
+      <uri>https://github.com/devedge</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>set proper main index page&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6997eba2bda6a5c4f37c78f5a34537897c5559f5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/devedge/GitNow/commit/6997eba2bda6a5c4f37c78f5a34537897c5559f5"/>
+    <title>
+        better card design
+    </title>
+    <updated>2016-05-20T00:31:32-04:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/16330401?v=3&amp;s=30"/>
+    <author>
+      <name>devedge</name>
+      <uri>https://github.com/devedge</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>better card design&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1e1fcd3c3ba356e9401d12f8a453c3cbd925b323</id>
+    <link type="text/html" rel="alternate" href="https://github.com/devedge/GitNow/commit/1e1fcd3c3ba356e9401d12f8a453c3cbd925b323"/>
+    <title>
+        Materialize page got some stuff
+    </title>
+    <updated>2016-05-19T18:32:34-04:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/16330401?v=3&amp;s=30"/>
+    <author>
+      <name>devedge</name>
+      <uri>https://github.com/devedge</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Materialize page got some stuff&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e1bd1f340baf0be699ee9fe0e07939246d22bb09</id>
+    <link type="text/html" rel="alternate" href="https://github.com/devedge/GitNow/commit/e1bd1f340baf0be699ee9fe0e07939246d22bb09"/>
+    <title>
+        Add button for example real notification
+    </title>
+    <updated>2016-05-19T14:36:04-04:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/16330401?v=3&amp;s=30"/>
+    <author>
+      <name>devedge</name>
+      <uri>https://github.com/devedge</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Add button for example real notification&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/83f124c236aa231508b4db5bbda7fb029ba568b0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/devedge/GitNow/commit/83f124c236aa231508b4db5bbda7fb029ba568b0"/>
+    <title>
+        Update README.md
+    </title>
+    <updated>2016-05-19T14:31:29-04:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/16330401?v=3&amp;s=30"/>
+    <author>
+      <name>devedge</name>
+      <uri>https://github.com/devedge</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Update README.md&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b49be01c9f6f8bcaba9dc3dd581eff5eecec7f15</id>
+    <link type="text/html" rel="alternate" href="https://github.com/devedge/GitNow/commit/b49be01c9f6f8bcaba9dc3dd581eff5eecec7f15"/>
+    <title>
+        now shows example icon
+    </title>
+    <updated>2016-05-19T14:11:05-04:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/16330401?v=3&amp;s=30"/>
+    <author>
+      <name>devedge</name>
+      <uri>https://github.com/devedge</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>now shows example icon&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f0a81ac30c4b092671c61415ea0d9e369ab34175</id>
+    <link type="text/html" rel="alternate" href="https://github.com/devedge/GitNow/commit/f0a81ac30c4b092671c61415ea0d9e369ab34175"/>
+    <title>
+        Allowed app to be resizeable (for now)
+    </title>
+    <updated>2016-05-19T14:03:23-04:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/16330401?v=3&amp;s=30"/>
+    <author>
+      <name>devedge</name>
+      <uri>https://github.com/devedge</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Allowed app to be resizeable (for now)&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fe8aec1174afb52a8cb136a728bf390fc3130b21</id>
+    <link type="text/html" rel="alternate" href="https://github.com/devedge/GitNow/commit/fe8aec1174afb52a8cb136a728bf390fc3130b21"/>
+    <title>
+        Fixed nasty navbar height
+    </title>
+    <updated>2016-05-19T14:02:07-04:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/16330401?v=3&amp;s=30"/>
+    <author>
+      <name>devedge</name>
+      <uri>https://github.com/devedge</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Fixed nasty navbar height&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bb8edd5918c16823e3498309a336a60386682461</id>
+    <link type="text/html" rel="alternate" href="https://github.com/devedge/GitNow/commit/bb8edd5918c16823e3498309a336a60386682461"/>
+    <title>
+        Added custom stylesheet
+    </title>
+    <updated>2016-05-19T13:49:27-04:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/16330401?v=3&amp;s=30"/>
+    <author>
+      <name>devedge</name>
+      <uri>https://github.com/devedge</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Added custom stylesheet&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3ad6e283af6a71b85e35c9b0a08397828436881b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/devedge/GitNow/commit/3ad6e283af6a71b85e35c9b0a08397828436881b"/>
+    <title>
+        Update README.md
+    </title>
+    <updated>2016-05-19T13:48:26-04:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/16330401?v=3&amp;s=30"/>
+    <author>
+      <name>devedge</name>
+      <uri>https://github.com/devedge</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Update README.md&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/254f0b1556fbd8877ad7f37760d13835d294ae84</id>
+    <link type="text/html" rel="alternate" href="https://github.com/devedge/GitNow/commit/254f0b1556fbd8877ad7f37760d13835d294ae84"/>
+    <title>
+        Update README.md
+    </title>
+    <updated>2016-05-19T13:46:47-04:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/16330401?v=3&amp;s=30"/>
+    <author>
+      <name>devedge</name>
+      <uri>https://github.com/devedge</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Update README.md&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7b24d310e0c9d0fc00682085bb4f1cf7e762cb1d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/devedge/GitNow/commit/7b24d310e0c9d0fc00682085bb4f1cf7e762cb1d"/>
+    <title>
+        Update README.md
+    </title>
+    <updated>2016-05-19T13:37:29-04:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/16330401?v=3&amp;s=30"/>
+    <author>
+      <name>devedge</name>
+      <uri>https://github.com/devedge</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Update README.md&lt;/pre>
+    </content>
+  </entry>
+</feed>
+
