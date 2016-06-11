@@ -2,9 +2,13 @@
    
    'use strict';
 
-   // functions here will have the option to generate an appropriate url 
-   // for the feed the user will want
+    // functions here will have the option to generate an appropriate url 
+    // for the feed the user will want
    
+    // ideas:
+    // maybe verify that the url is a legit github url
+    // looks like there are several rss feeds for branches, need to check that
+
     function FeedFormat() {
         // maybe some setup stuff here
     } 
