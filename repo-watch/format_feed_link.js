@@ -22,7 +22,21 @@
     // 2. the direct url to the repository
     // 3. the git url you can copy while cloning a repo
     // anything else... Not hard to implement, but maybe too many options for the user...
-   
+    
+    FeedFormat.prototype.fromNameAndRepo = function fromNameAndRepo(values, cb) {
+        var u = values.user;
+        var r = values.repo;
+
+        // after parsing, call back using 'cb'
+    }
+    
+    FeedFormat.prototype.fromUrl = function fromUrl(urlstring, cb) {
+        // after parsing, call back using 'cb'
+    }
+
+    FeedFormat.prototype.fromGitUrl = function fromGitUrl(urlstring, cb) {
+        // after parsing, call back using 'cb'
+    }
 
     // Allow this module to be exported and used
     module.exports = FeedFormat;

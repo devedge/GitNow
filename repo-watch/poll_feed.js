@@ -2,6 +2,8 @@
 
     'use strict';
 
+    var request = require('request');
+
     // this module actually polls the rss/atom feed
 
     // set up a function that takes an array of times & feed urls
