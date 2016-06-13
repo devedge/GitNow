@@ -1,12 +1,12 @@
 // (function() {
 
-    // 'use strict';
-    // 
-    // branch
-    // https://github.com/devedge/GitNow/commits/master.atom
-    // 
-    // full repo?
-    // https://github.com/devedge/GitNow/commits.atom
+// 'use strict';
+// 
+// branch
+// https://github.com/devedge/GitNow/commits/master.atom
+// 
+// full repo?
+// https://github.com/devedge/GitNow/commits.atom
 
 var request = require('request');
 
@@ -34,3 +34,27 @@ setInterval(function(){
 }, time_interval_in_miliseconds);
 
 // });
+
+/*
+
+given: url to atom feed
+
+call an 'add feed' function with the url & the time to check (poll time)
+
+a function 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/

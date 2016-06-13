@@ -25,4 +25,34 @@
     // maybe do some kind of callback or event emitter so that the notification
     // library can be called
 
+
+
+
+
+    // keep an array of feeds being watched
+    // if application close is called, clear the entire array
+    // if a feed is paused, remove it from the array
+    // if a feed is resumed, add it back to the array
+
+    function FeedPollManager(argument) {
+        
+    }
+
+    FeedPollManager.prototype.addFeed = function addFeed(url, pollTime) {
+        // adds a feed, saves the feed locally (do later) and begins polling it
+        // should return a unique id that can be referenced elsewhere
+    }
+
+    FeedPollManager.prototype.deleteFeed = function deleteFeed(url, pollTime) {
+        
+    }
+
+    FeedPollManager.prototype.pauseFeed = function pauseFeed(url, pollTime) {
+        
+    }
+
+    FeedPollManager.prototype.resumeFeed = function resumeFeed(url, pollTime) {
+        
+    }
+
 })();
