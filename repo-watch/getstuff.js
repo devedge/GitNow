@@ -1,6 +1,6 @@
 
 var request = require('request');
-var EventEmitter = require('events').EventEmitter;
+const EventEmitter = require('events');
 var ee = new EventEmitter();
 
 // check every 30 seconds
@@ -20,7 +20,11 @@ function wtest(feedURL) {
             // and pretend nothing changed
             ee.emit('no-change');
 
-            // cb(null, body);
+            // stop the interval function
+            clearInterval(repo1);
+        } else {
+
+            ee.emit('error', err);
         }
     });
 }
@@ -33,6 +37,10 @@ ee.on('req-sent', function() {
 
 ee.on('no-change', function() {
     console.log('No changes found');
+});
+
+ee.on('error', function(err) {
+    console.log(err);
 });
 
 
