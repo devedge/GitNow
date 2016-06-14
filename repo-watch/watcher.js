@@ -8,6 +8,7 @@
     const EventEmitter = require('events');
     const e = new EventEmitter();
 
+    var started = false;
     var watcherInterval;
     var feedURL;
     var refreshtime;
@@ -38,15 +39,21 @@
 
     // Start the interval watcher
     Watcher.prototype.start = function start() {
+        // do error checking for the 'started' variable
         watcherInterval = setInterval(function() {
             pollFeed(feedURL);
 
         }, refreshtime);
+
+        started = true;
     }
 
     // Kill the interval watcher
     Watcher.prototype.kill = function kill() {
+        // do error checking for the 'started' variable
         clearInterval(watcherInterval);
+
+        started = false;
     }
 
 
@@ -73,6 +80,10 @@
     e.on('response', function (body) {
         // check for differences, probably with a hash since that will be quicker
         // if there are any, then handle them and notify the application
+        console.log('yup, working');
     });
+
+
+    module.exports = Watcher;
 
 })();

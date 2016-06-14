@@ -1,4 +1,16 @@
 
+const Watcher = require('./watcher.js');
+
+var gitnowrepo = new Watcher('https://github.com/devedge/GitNow/commits/master.atom', 15000);
+
+// start watching
+gitnowrepo.start();
+
+// kill it later
+// gitnowrepo.kill();
+
+
+/*
 var request = require('request');
 const EventEmitter = require('events');
 var ee = new EventEmitter();
@@ -43,7 +55,7 @@ ee.on('error', function(err) {
     console.log(err);
 });
 
-
+*/
 // (function() {
 
 // 'use strict';
