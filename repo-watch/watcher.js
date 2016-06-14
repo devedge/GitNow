@@ -4,7 +4,7 @@
 
     var request = require('request');
 
-    // global (withing this module) event emitter
+    // global (within this module) event emitter
     const EventEmitter = require('events');
     const e = new EventEmitter();
 
@@ -28,11 +28,12 @@
 
     */
 
-    function Watcher(fu, r) {
+    // Constructor function to initiialize a new repository to watch
+    function Watcher(url, time) {
         // initialize a new repo here
         // need to ensure values here are valid?
-        feedURL = fu;
-        refreshtime = r;
+        feedURL = url;
+        refreshtime = time;
 
         // do we still want to generate a unique id?
     }
@@ -73,7 +74,7 @@
 
 
     // set up event emitters to handle different actions
-    e.on('err', function (err) {
+    e.on('error', function (err) {
         console.log(err);
     });
 

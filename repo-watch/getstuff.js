@@ -6,9 +6,6 @@ var gitnowrepo = new Watcher('https://github.com/devedge/GitNow/commits/master.a
 // start watching
 gitnowrepo.start();
 
-// kill it later
-// gitnowrepo.kill();
-
 
 /*
 var request = require('request');
@@ -56,6 +53,9 @@ ee.on('error', function(err) {
 });
 
 */
+
+
+
 // (function() {
 
 // 'use strict';
