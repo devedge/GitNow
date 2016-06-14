@@ -1,3 +1,41 @@
+
+var request = require('request');
+var EventEmitter = require('events').EventEmitter;
+var ee = new EventEmitter();
+
+// check every 30 seconds
+var repo1 = setInterval(function() {
+    wtest('https://github.com/devedge/GitNow/commits/master.atom');
+}, 30000);
+
+
+
+
+function wtest(feedURL) {
+
+    ee.emit('req-sent');
+
+    request(feedURL, function(err, resp, body) {
+        if(!err && (resp.statusCode === 200)) {
+            // and pretend nothing changed
+            ee.emit('no-change');
+
+            // cb(null, body);
+        }
+    });
+}
+
+
+
+ee.on('req-sent', function() {
+    console.log('Request Sent');
+});
+
+ee.on('no-change', function() {
+    console.log('No changes found');
+});
+
+
 // (function() {
 
 // 'use strict';
@@ -7,8 +45,7 @@
 // 
 // full repo?
 // https://github.com/devedge/GitNow/commits.atom
-
-var request = require('request');
+/*
 
 var username = 'devedge';
 var reponame = 'GitNow';
@@ -32,6 +69,9 @@ setInterval(function(){
         });
     }
 }, time_interval_in_miliseconds);
+
+
+*/
 
 // });
 
