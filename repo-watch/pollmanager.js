@@ -8,6 +8,16 @@
     var livefeeds = []; // array of objects?
     var feedname = '';
 
+    var feeds = {
+        numfeeds: 1,
+        active: [],
+        909adb9aec6641fd30e638ee43400b7f: {
+            name: 'GitNow',
+            user: 'devedge',
+            url: 'https://github.com/devedge/GitNow'
+        }
+    }
+
     function FeedPollManager(configFile) {
         // initialize the manager from a config file, or generate a new one?
 
@@ -35,9 +45,6 @@
 
         // generate a new feedname
         // make that feedname a copy of the watcher function
-        var s = watcher(feedURL);
-
-        setInterval(s, pollTime);
     }
 
     FeedPollManager.prototype.deleteFeed = function deleteFeed(feedID) {
