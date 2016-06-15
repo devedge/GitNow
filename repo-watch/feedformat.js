@@ -38,11 +38,51 @@
         // after parsing, call back using 'cb'
     }
 
-    FeedFormat.prototype.fromGitUrl = function fromGitUrl(urlstring, cb) {
-        // after parsing, call back using 'cb'
+    /*FeedFormat.prototype.fromGitUrl = */
+
+    // currently only returns the master branch
+    function fromGitUrl(urlstring, cb) {
+
+        var baseurl = 'https://github.com/';
+        var masterfeed = '/commits/master.atom';
+        var username;
+        var reponame;
+
+        // ensure the github url is in the string
+        if (urlstring.match(/github\.com/) === null) {
+            return null;
+        } else {
+            username = urlstring.match(/github\.com\/[^/]*/)[0].replace(/github\.com\//, '');
+            reponame = urlstring.match(/[^/]*\.git/)[0].replace(/\.git/, '');
+
+            return baseurl + username + '/' + reponame + masterfeed;
+        }
     }
 
     // Allow this module to be exported and used
-    module.exports = FeedFormat;
+    // module.exports = FeedFormat;
+    module.exports = {
+        FeedFormat,
+        fromGitUrl
+        // fromNameAndRepo
+    };
 
 })();
+
+
+
+
+/*
+
+https://github.com/devedge/GitNow.git
+
+Regex to get url up to first slash
+github.com/[^/]*
+
+old: http[s]*://github.com/[^/]*
+
+Regex to get repository name
+[^/]*.git
+
+*/
+

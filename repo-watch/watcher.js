@@ -84,7 +84,7 @@
 
     e.on('response', function (body) {
         // check for differences, probably with a hash since that will be quicker
-        // if there are any, then handle them and notify the application
+        // if there are any, then handle them (with imported parser) and notify the application
         console.log('yup, working');
     });
 

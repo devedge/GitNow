@@ -1,10 +1,16 @@
 
-const Watcher = require('./watcher.js');
+const format = require('./feedformat');
+url = 'https://github.com/devedge/GitNow.git';
+
+console.log(format.fromGitUrl(url));
+
+
+/*const Watcher = require('./watcher.js');
 
 var gitnowrepo = new Watcher('https://github.com/devedge/GitNow/commits/master.atom', 15000);
 
 // start watching
-gitnowrepo.start();
+gitnowrepo.start();*/
 
 
 /*
