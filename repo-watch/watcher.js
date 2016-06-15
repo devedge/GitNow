@@ -67,10 +67,8 @@
 
         request(feedURL, function(err, resp, body) {
             if(!err && (resp.statusCode === 200)) {
-                // cb(null, body);
                 e.emit('response', body);
             } else {
-                // cb(err, null);
                 e.emit('error', err);
             }
         });
@@ -78,6 +76,7 @@
 
 
     // set up event emitters to handle different actions
+    
     e.on('error', function (err) {
         console.log(err);
     });

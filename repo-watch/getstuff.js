@@ -1,9 +1,13 @@
 
 const format = require('./feedformat');
-url = 'https://github.com/devedge/GitNow.git';
+var fullurl = 'https://github.com/devedge/GitNow';
+var url = 'https://github.com/devedge/GitNow.git';
 
 console.log(format.fromGitUrl(url));
 
+console.log(format.fromNameAndRepo({user: 'schmidt', repo: 'thegroundwork'}))
+
+console.log(format.fromUrl(fullurl));
 
 /*const Watcher = require('./watcher.js');
 
