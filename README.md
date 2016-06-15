@@ -7,6 +7,10 @@ A cross-platform Github notification app
 <br><br>
 [Ideas about how the program will work here](https://github.com/devedge/GitNow/wiki/Ideas)
 
+## License
+
+GNU GPLv3
+
 <!-- To run after cloning the repository: <br>
 `npm install && npm start`
 <br><br>

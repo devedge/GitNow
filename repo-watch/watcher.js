@@ -32,6 +32,10 @@
     function Watcher(url, time) {
         // initialize a new repo here
         // need to ensure values here are valid?
+
+        // make sure the time is greater than or equal to 1min 10sec
+        // default time 5 minutes
+
         feedURL = url;
         refreshtime = time;
 
