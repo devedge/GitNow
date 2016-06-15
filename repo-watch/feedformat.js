@@ -11,6 +11,14 @@
     // 2. From the actual URL to the repo
     // 3. From the URL you get when trying to clone the repo
 
+    // Usage example:
+
+    // const format = require('./feedformat');
+    // format.fromNameAndRepo({user: 'devedge', repo: 'GitNow'});
+    // format.fromUrl('https://github.com/devedge/GitNow');
+    // format.fromGitUrl('https://github.com/devedge/GitNow.git');
+
+    // From the username and repo name
     function fromNameAndRepo(values) {
         var username = values.user;
         var reponame = values.repo;
@@ -27,15 +35,16 @@
         }
     }
     
-
+    // From the URL to the repo
     function fromUrl(urlstring, cb) {
 
         var username;
         var reponame;
-        
 
+        // ensure the github domain name is in the string
         if (urlstring.match(/github\.com/) === null) {
             
+            // Return null if the value is invalid
             return null;
         } else {
             username = urlstring.match(/github\.com\/[^/]*/)[0]
@@ -48,7 +57,7 @@
         }
     }
 
-    // currently only returns the master branch
+    // From the URL you get while trying to clone the repo
     function fromGitUrl(urlstring) {
 
         var username;
@@ -86,12 +95,5 @@
     // ideas:
     // maybe verify that the url is a legit github url
     // looks like github has several rss feeds for branches, need to check that
-
-
-    // other functions to create a feed url from 
-    // 1. a user name and repo name
-    // 2. the direct url to the repository
-    // 3. the git url you can copy while cloning a repo
-    // anything else... Not hard to implement, but maybe too many options for the user...
     
 })();

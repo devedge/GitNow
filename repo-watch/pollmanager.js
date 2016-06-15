@@ -11,10 +11,10 @@
     var feeds = {
         numfeeds: 1,
         active: [],
-        909adb9aec6641fd30e638ee43400b7f: {
+        '909adb9aec6641fd30e638ee43400b7f': {
             name: 'GitNow',
             user: 'devedge',
-            url: 'https://github.com/devedge/GitNow'
+            feedurl: 'https://github.com/devedge/GitNow/commits/master.atom'
         }
     }
 

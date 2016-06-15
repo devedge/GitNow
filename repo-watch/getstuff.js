@@ -114,17 +114,4 @@ call an 'add feed' function with the url & the time to check (poll time)
 a function 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 */
