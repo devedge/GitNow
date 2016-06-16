@@ -6,7 +6,7 @@
 
     // global (within this module) event emitter
     const EventEmitter = require('events');
-    const e = new EventEmitter();
+    const event = new EventEmitter();
 
     var started = false;
     var watcherInterval;
@@ -44,32 +44,43 @@
 
     // Start the interval watcher
     Watcher.prototype.start = function start() {
-        // do error checking for the 'started' variable
-        watcherInterval = setInterval(function() {
-            pollFeed(feedURL);
 
-        }, refreshtime);
+        // if the watcher has already been started, throw an error?
+        if (started !== false) {
+            // throw some error
+        } else {
+            // watch the 'feedURL' every 'refreshtime' amount
+            watcherInterval = setInterval(function() {
+                pollFeed(feedURL);
+            }, refreshtime);
 
-        started = true;
+            started = true;
+        }
     }
 
     // Kill the interval watcher
     Watcher.prototype.kill = function kill() {
-        // do error checking for the 'started' variable
-        clearInterval(watcherInterval);
 
-        started = false;
+        // if the watcher has already been killed, throw an error?
+        if (started !== true) {
+            // throw some error
+        } else {
+            clearInterval(watcherInterval);
+            started = false;
+        }
     }
 
 
     // private function for requesting a url
     function pollFeed(feedURL) {
 
+        // Do a simple GET request for the feed
+        // (do we want to send additional data, like headers?)
         request(feedURL, function(err, resp, body) {
             if(!err && (resp.statusCode === 200)) {
-                e.emit('response', body);
+                event.emit('response', body);
             } else {
-                e.emit('error', err);
+                event.emit('error', err, resp);
             }
         });
     }
@@ -77,14 +88,24 @@
 
     // set up event emitters to handle different actions
     
-    e.on('error', function (err) {
+    event.on('error', function (err) {
+
+        // depending on the status code sent out, return different error messages
+        // eg., if 'resp.statusCode' is 404, return an error message about how the repo
+        //      cannot be found, and double check spelling
+
         console.log(err);
     });
 
-    e.on('response', function (body) {
+    event.on('response', function (body) {
+        // from here, asynchronously parse the body to determine if there were any changes
+        // if anything notable happened, use the emitter 'event' to handle
+
+        console.log('yup, working');
+
+
         // check for differences, probably with a hash since that will be quicker
         // if there are any, then handle them (with imported parser) and notify the application
-        console.log('yup, working');
     });
 
 

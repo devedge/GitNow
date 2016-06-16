@@ -14,6 +14,8 @@
         live: true
     }
 
+    // HOW TO HANDLE USERS WITH SPACES/SPECIAL CHARACTER IN THEIR NAME
+
 
     // populate with live watchers from the config file,
     // and add new ones from the addFeed() function
