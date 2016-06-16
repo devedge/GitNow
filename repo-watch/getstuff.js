@@ -1,4 +1,17 @@
 
+const Watcher = require('./watcher.js');
+
+var repolist = [];
+
+repolist.push('heh');
+
+repolist[0] = new Watcher('https://github.com/devedge/GitNow/commits/master.atom', 15000);
+
+// start watching
+repolist[0].start();
+
+
+/*
 const format = require('./feedformat');
 var fullurl = 'https://github.com/devedge/GitNow';
 var url = 'https://github.com/devedge/GitNow.git';
@@ -8,13 +21,7 @@ console.log(format.fromGitUrl(url));
 console.log(format.fromNameAndRepo({user: 'schmidt', repo: 'thegroundwork'}))
 
 console.log(format.fromUrl(fullurl));
-
-/*const Watcher = require('./watcher.js');
-
-var gitnowrepo = new Watcher('https://github.com/devedge/GitNow/commits/master.atom', 15000);
-
-// start watching
-gitnowrepo.start();*/
+*/
 
 
 /*
