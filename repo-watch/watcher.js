@@ -15,6 +15,12 @@
 
     /*
 
+    Adaptive watching?
+    if a feed has been pushed to recently, watch it more closely for a period of x min (2nd level)
+        if no updates within that time period, fall back to the regular watch time (1st level)
+    if there are more pushes within that short time period, upgrade to a faster watch time (3rd level)?
+        if there haven't been pushes within x time, fall all the way back to the 1st level?
+
     // usage:
 
     var Watcher = require('watcher');
@@ -29,12 +35,12 @@
     */
 
     // Constructor function to initiialize a new repository to watch
-    function Watcher(url, time) {
+    function Watcher(url, time, err) {
         // initialize a new repo here
         // need to ensure values here are valid?
 
         // make sure the time is greater than or equal to 1min 10sec
-        // default time 5 minutes
+        // default time 5-7 minutes
 
         feedURL = url;
         refreshtime = time;
@@ -88,7 +94,7 @@
 
     // set up event emitters to handle different actions
     
-    event.on('error', function (err) {
+    event.on('error', function (err, resp) {
 
         // depending on the status code sent out, return different error messages
         // eg., if 'resp.statusCode' is 404, return an error message about how the repo

@@ -6,20 +6,21 @@
     const genfeedurl = require('genfeedurl');
 
     // an example feed? maybe?
-    var feed = {
-        name: 'GitNow',
-        user: 'devedge',
-        feedurl: 'https://github.com/devedge/GitNow/commits/master.atom',
-        refreshtime: '',
-        live: true
-    }
+    // var feed = {
+    //     name: 'GitNow',
+    //     user: 'devedge',
+    //     feedurl: 'https://github.com/devedge/GitNow/commits/master.atom',
+    //     refreshtime: '',
+    //     live: true
+    // }
 
     // HOW TO HANDLE USERS WITH SPACES/SPECIAL CHARACTER IN THEIR NAME
 
 
     // populate with live watchers from the config file,
     // and add new ones from the addFeed() function
-    var livefeeds = {}; // an object containing a list of live watchers
+    var livewatchers = {}; // an object containing a list of live watchers
+    var livefeedIDs = [];  // an array containing the IDs of all the live feeds
 
     // livefeeds = {
     //     devedgeGitNow: Watcher {},
@@ -65,7 +66,7 @@
     //     }
     // }
 
-    function FeedPollManager(configFile) {
+    function PollManager(configFile) {
         // if config file is specified, try to load it
         //      if there also another feed file, throw error
 
@@ -74,7 +75,7 @@
 
 
         /*
-        var manager = new FeedPollManager();
+        var manager = new PollManager();
         manager.addFeed(url, 60000);
 
         var Watcher = require('watcher');
@@ -85,28 +86,42 @@
 
     }
 
-    FeedPollManager.prototype.start = function start(cb) {
+    PollManager.prototype.init = function init(cb) {
         // start all the repos to watch, and call back (or event emit) when done
     }
 
-    FeedPollManager.prototype.addFeed = function addFeed(feedURL, pollTime) {
+    PollManager.prototype.addFeed = function addFeed(feedURL, pollTime) {
+        // feedOBJ = {
+        //    user: '',
+        //    repo: '',
+        //    giturl: '',
+        //    url: ''
+        // }
+
+
         // adds a feed, saves the feed locally (do later) and begins polling it
         // should return a unique id that can be referenced elsewhere
 
         // generate a new feedname
         // make that feedname a copy of the watcher function
+
+        feed = genfeedurl.fromGitUrl(feedURL);
+
+        livewatchers[feed.ID] = new Watcher(feed.url, );
     }
 
-    FeedPollManager.prototype.deleteFeed = function deleteFeed(feedID) {
+    PollManager.prototype.deleteFeed = function deleteFeed(feedID) {
         
     }
 
-    FeedPollManager.prototype.pauseFeed = function pauseFeed(feedID) {
-        
+    // Kill the watcher and remove it from the live feed list
+    PollManager.prototype.pauseFeed = function pauseFeed(feedID) {
+        livewatchers[feedID].kill();
     }
 
-    FeedPollManager.prototype.resumeFeed = function resumeFeed(feedID) {
-        
+    // Add the watcher back to the live feed list 
+    PollManager.prototype.resumeFeed = function resumeFeed(feedID) {
+        livewatchers[feedID].start();
     }
 
     // this module actually polls the rss/atom feed

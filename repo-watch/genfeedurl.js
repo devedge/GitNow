@@ -42,7 +42,7 @@
     }
     
     // From the URL to the repo
-    function fromUrl(urlstring, cb) {
+    function fromUrl(urlstring) {
 
         var username;
         var reponame;
