@@ -1,14 +1,13 @@
 
+const request = require('request');
+const notifier = require('node-notifier');
 const Watcher = require('./watcher.js');
 
-var repolist = [];
+var repolist = {};
 
-repolist.push('heh');
+repolist.devedgeGitNow = new Watcher('https://github.com/devedge/GitNow/commits/master.atom', 15000, request, notifier);
 
-repolist[0] = new Watcher('https://github.com/devedge/GitNow/commits/master.atom', 15000);
-
-// start watching
-repolist[0].start();
+repolist.devedgeGitNow.start();
 
 
 /*

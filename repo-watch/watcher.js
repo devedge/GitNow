@@ -2,16 +2,20 @@
     
     'use strict';
 
-    var request = require('request');
+    // Initialize the variables used as imports. To reduce overhead, 
+    // these modules are 'require()'d in the poll manager (pollmanager.js)
+    var notifier;
+    var request;
 
     // global (within this module) event emitter
     const EventEmitter = require('events');
     const event = new EventEmitter();
 
-    var started = false;
     var watcherInterval;
-    var feedURL;
     var refreshtime;
+    var feedURL;
+
+    var started = false;
 
     /*
 
@@ -35,7 +39,7 @@
     */
 
     // Constructor function to initiialize a new repository to watch
-    function Watcher(url, time, err) {
+    function Watcher(url, time, r, n, err) {
         // initialize a new repo here
         // need to ensure values here are valid?
 
@@ -44,11 +48,13 @@
 
         feedURL = url;
         refreshtime = time;
+        request = r;
+        notifier = n;
 
         // do we still want to generate a unique id?
     }
 
-    // Start the interval watcher
+    // Start the interval watcher (add an optional extra time argument?)
     Watcher.prototype.start = function start() {
 
         // if the watcher has already been started, throw an error?
@@ -107,11 +113,21 @@
         // from here, asynchronously parse the body to determine if there were any changes
         // if anything notable happened, use the emitter 'event' to handle
 
-        console.log('yup, working');
+        // console.log('yup, working');
 
+        notifier.notify({
+            title: 'testing',
+            message: 'body length: ' + body.length
+        });
 
         // check for differences, probably with a hash since that will be quicker
         // if there are any, then handle them (with imported parser) and notify the application
+    });
+
+    event.on('notify', function() {
+        // DONT DO THIS
+        // to reduce overhead, import the notify module here
+        // when the notification is done, set the value to 'null' so it will be garbage collected
     });
 
 

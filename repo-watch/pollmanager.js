@@ -2,8 +2,14 @@
 
     'use strict';
 
+    const request = require('request');
+    const notifier = require('node-notifier');
     const Watcher = require('watcher');
     const genfeedurl = require('genfeedurl');
+
+    // to maximize efficiency, 'require' everything here. references can 
+    // be passed around as arguments instead of 'requiring' a new module
+    // every time something gets initialized
 
     // an example feed? maybe?
     // var feed = {
@@ -90,6 +96,9 @@
         // start all the repos to watch, and call back (or event emit) when done
     }
 
+    // have two poll times, regular and priority
+
+    // Add a new feed to the config object and start watching it
     PollManager.prototype.addFeed = function addFeed(feedURL, pollTime) {
         // feedOBJ = {
         //    user: '',
@@ -107,20 +116,25 @@
 
         feed = genfeedurl.fromGitUrl(feedURL);
 
-        livewatchers[feed.ID] = new Watcher(feed.url, );
+        // To reduce memory overhead and optimize speed, pass shared (const) references 
+        // to the 'request' and 'notifier' modules (instead of 'require()' a new one per module).
+        livewatchers[feed.ID] = new Watcher(feed.url, , request, notifier);
     }
 
+    // make sure the feed has been stopped, then remove it from the config object
     PollManager.prototype.deleteFeed = function deleteFeed(feedID) {
         
     }
 
     // Kill the watcher and remove it from the live feed list
     PollManager.prototype.pauseFeed = function pauseFeed(feedID) {
+        // TODO
         livewatchers[feedID].kill();
     }
 
     // Add the watcher back to the live feed list 
     PollManager.prototype.resumeFeed = function resumeFeed(feedID) {
+        // TODO
         livewatchers[feedID].start();
     }
 
