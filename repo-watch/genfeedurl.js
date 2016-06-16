@@ -31,7 +31,13 @@
 
             return null;
         } else {
-            return baseurl + username + '/' + reponame + masterfeed;
+            
+            return {
+                ID: '' + username + reponame,
+                url: baseurl + username + '/' + reponame + masterfeed,
+                username: username,
+                reponame: reponame
+            };
         }
     }
     
@@ -53,7 +59,12 @@
             reponame = urlstring.match(/github\.com\/[^/]*\/[^/]*/)[0]
                             .replace(/github\.com\/[^/]*\//, '');
 
-            return baseurl + username + '/' + reponame + masterfeed;
+            return {
+                ID: '' + username + reponame,
+                url: baseurl + username + '/' + reponame + masterfeed,
+                username: username,
+                reponame: reponame
+            };
         }
     }
 
@@ -77,7 +88,12 @@
             reponame = urlstring.match(/[^/]*\.git/)[0]
                         .replace(/\.git/, '');
 
-            return baseurl + username + '/' + reponame + masterfeed;
+            return {
+                ID: '' + username + reponame,
+                url: baseurl + username + '/' + reponame + masterfeed,
+                username: username,
+                reponame: reponame
+            };
         }
     }
 

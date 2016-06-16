@@ -2,11 +2,38 @@
 
     'use strict';
 
-    const request = require('request');
     const Watcher = require('watcher');
+    const genfeedurl = require('genfeedurl');
 
-    var livefeeds = []; // array of objects?
-    var feedname = '';
+    // an example feed? maybe?
+    var feed = {
+        name: 'GitNow',
+        user: 'devedge',
+        feedurl: 'https://github.com/devedge/GitNow/commits/master.atom',
+        refreshtime: '',
+        live: true
+    }
+
+
+    // populate with live watchers from the config file,
+    // and add new ones from the addFeed() function
+    var livefeeds = {}; // an object containing a list of live watchers
+
+    // livefeeds = {
+    //     devedgeGitNow: Watcher {},
+    //     etc...
+    // }
+    // livefeeds.devedgeGitNow.start();
+    // livefeeds.devedgeGitNow.kill();
+
+    var feedname;
+    // the unique ID is the username + reponame (github doesn't allow duplicate repos)
+    // NEED TO REMOVE ANY SPECIAL CHARACTERS ('.', '_', '-', etc)
+
+    // To add a feed:
+    // feedname = '' + feed.user + feed.name;
+    // livefeeds[feedname] = new Watcher(url, time);
+
 
     // lifeeds array usage:
     /*
@@ -37,8 +64,11 @@
     // }
 
     function FeedPollManager(configFile) {
-        // initialize the manager from a config file, or generate a new one?
+        // if config file is specified, try to load it
+        //      if there also another feed file, throw error
 
+        // if no config file specified and there is no feed 
+        // file, generate a new one
 
 
         /*
