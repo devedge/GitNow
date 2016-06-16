@@ -13,7 +13,7 @@
     
     var i = 0;
     // keep track of which array index was started at what point in the array
-    // also store the location of the thing
+    // also store the location of the thing in some big object
 
     // initialize
     lifefeeds[i] = new Watcher(url, time);
@@ -22,7 +22,7 @@
     lifefeeds[i].start();
 
     // stop
-    lifefeeds[i].start();
+    lifefeeds[i].kill();
 
     */
 

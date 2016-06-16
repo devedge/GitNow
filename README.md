@@ -5,7 +5,7 @@ A cross-platform Github notification app
 
 [Developer information is in the wiki](https://github.com/devedge/GitNow/wiki)
 <br><br>
-[Ideas about how the program will work here](https://github.com/devedge/GitNow/wiki/Ideas)
+[General program workflow ideas](https://github.com/devedge/GitNow/wiki/Ideas)
 
 ## License
 

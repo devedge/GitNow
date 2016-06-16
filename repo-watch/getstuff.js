@@ -12,7 +12,7 @@ repolist[0].start();
 
 
 /*
-const format = require('./feedformat');
+const format = require('./genfeedurl');
 var fullurl = 'https://github.com/devedge/GitNow';
 var url = 'https://github.com/devedge/GitNow.git';
 
