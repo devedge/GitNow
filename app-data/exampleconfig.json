@@ -1,0 +1,10 @@
+{
+    "devedgeGitNow": {
+        "ID": "devedgeGitNow",
+        "feedurl": "https://github.com/devedge/GitNow/commits/master.atom",
+        "refreshrate": 15,
+        "live": true,
+        "user": "devedge",
+        "repo": "GitNow"
+    }
+}

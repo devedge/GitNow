@@ -2,14 +2,22 @@
 
     'use strict';
 
+    // to maximize memory efficiency, 'require' everything here. references can 
+    // be passed around as arguments instead of 'requiring' a new module
+    // every time something gets initialized
     const request = require('request');
     const notifier = require('node-notifier');
     const Watcher = require('watcher');
     const genfeedurl = require('genfeedurl');
 
-    // to maximize efficiency, 'require' everything here. references can 
-    // be passed around as arguments instead of 'requiring' a new module
-    // every time something gets initialized
+    // The application configuration. It is updated and saved locally as
+    // JSON on major events (eg., just after adding/deleting a repo).
+    var config;
+    config.livefeedIDs = [];
+
+    // Poll time is currently 20 minutes, but may be adjusted
+    var polltime = 1200;
+    
 
     // an example feed? maybe?
     // var feed = {
@@ -93,19 +101,20 @@
     }
 
     PollManager.prototype.init = function init(cb) {
+        // IF THERE IS AN INTERNET CONNECTION
         // start all the repos to watch, and call back (or event emit) when done
+
+        // read the config file
+        // find out what is running by checking the 'live' array contiaining feed IDs
+        // populate the 'livewatchers' object
+        // iterate over all the watchers and start them
     }
 
     // have two poll times, regular and priority
 
     // Add a new feed to the config object and start watching it
-    PollManager.prototype.addFeed = function addFeed(feedURL, pollTime) {
-        // feedOBJ = {
-        //    user: '',
-        //    repo: '',
-        //    giturl: '',
-        //    url: ''
-        // }
+    PollManager.prototype.addFeed = function addFeed(feedURL) {
+
 
 
         // adds a feed, saves the feed locally (do later) and begins polling it
@@ -116,9 +125,20 @@
 
         feed = genfeedurl.fromGitUrl(feedURL);
 
+        // Initialize this new feed in the config file (need to do async fs save)
+        config[feed.ID] = {
+            ID: feed.ID,
+            feedurl: feed.url,
+            refreshrate: polltime,
+            live: true,
+            user: feed.username,
+            repo: feed.reponame
+        };
+
         // To reduce memory overhead and optimize speed, pass shared (const) references 
         // to the 'request' and 'notifier' modules (instead of 'require()' a new one per module).
-        livewatchers[feed.ID] = new Watcher(feed.url, , request, notifier);
+        livewatchers[feed.ID] = new Watcher(feed.url, polltime, request, notifier);
+        livewatchers[feed.ID].start();
     }
 
     // make sure the feed has been stopped, then remove it from the config object

@@ -9,13 +9,16 @@
 
     // global (within this module) event emitter
     const EventEmitter = require('events');
-    const event = new EventEmitter();
+    const w_event = new EventEmitter();
 
     var watcherInterval;
     var refreshtime;
     var feedURL;
 
     var started = false;
+
+    var name;
+    var repo;
 
     /*
 
@@ -39,6 +42,7 @@
     */
 
     // Constructor function to initiialize a new repository to watch
+    // pass in time as seconds
     function Watcher(url, time, r, n, err) {
         // initialize a new repo here
         // need to ensure values here are valid?
@@ -46,8 +50,12 @@
         // make sure the time is greater than or equal to 1min 10sec
         // default time 5-7 minutes
 
+        // verify the time is not too short
+        // verify that it is an integer
+        // verify that it is not too large
+
         feedURL = url;
-        refreshtime = time;
+        refreshtime = time * 1000;
         request = r;
         notifier = n;
 
@@ -60,6 +68,7 @@
         // if the watcher has already been started, throw an error?
         if (started !== false) {
             // throw some error
+            console.log('ERROR: Feed has already been started');
         } else {
             // watch the 'feedURL' every 'refreshtime' amount
             watcherInterval = setInterval(function() {
@@ -76,6 +85,7 @@
         // if the watcher has already been killed, throw an error?
         if (started !== true) {
             // throw some error
+            console.log('ERROR: Feed has not been started');
         } else {
             clearInterval(watcherInterval);
             started = false;
@@ -90,9 +100,9 @@
         // (do we want to send additional data, like headers?)
         request(feedURL, function(err, resp, body) {
             if(!err && (resp.statusCode === 200)) {
-                event.emit('response', body);
+                w_event.emit('response', body);
             } else {
-                event.emit('error', err, resp);
+                w_event.emit('error', err, resp);
             }
         });
     }
@@ -100,31 +110,41 @@
 
     // set up event emitters to handle different actions
     
-    event.on('error', function (err, resp) {
+    w_event.on('error', function (err, resp) {
+        var errortitle;
+        var message;
 
+        if (resp) {
+            if (resp.statusCode === 404){
+                errortitle = repo + ' - ERROR: Repo not found';
+                message = 'The link location may have been mistyped';
+            }
+        }
         // depending on the status code sent out, return different error messages
         // eg., if 'resp.statusCode' is 404, return an error message about how the repo
         //      cannot be found, and double check spelling
 
+        // try to find out if there is a connection error
+        // if so, just display a message in the GUI about needing an internet conection
         console.log(err);
     });
 
-    event.on('response', function (body) {
+    w_event.on('response', function (body) {
         // from here, asynchronously parse the body to determine if there were any changes
-        // if anything notable happened, use the emitter 'event' to handle
+        // if anything notable happened, use the emitter 'w_event' to handle
 
         // console.log('yup, working');
 
         notifier.notify({
-            title: 'testing',
-            message: 'body length: ' + body.length
+            title: 'GitNow - ERROR: Repo not found',
+            message: 'The link location may have been mistyped'
         });
 
         // check for differences, probably with a hash since that will be quicker
         // if there are any, then handle them (with imported parser) and notify the application
     });
 
-    event.on('notify', function() {
+    w_event.on('notify', function() {
         // DONT DO THIS
         // to reduce overhead, import the notify module here
         // when the notification is done, set the value to 'null' so it will be garbage collected
