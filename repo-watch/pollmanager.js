@@ -12,8 +12,35 @@
 
     // The application configuration. It is updated and saved locally as
     // JSON on major events (eg., just after adding/deleting a repo).
-    var config;
-    config.livefeedIDs = [];
+    var config = {
+        repos: ['devedgeGitNow', 'inikulinineed'],
+        livefeeds: ['devedgeGitNow'],
+        numrepos: 2,
+        devedgeGitNow: {
+            "ID": "devedgeGitNow",
+            "feedurl": "https://github.com/devedge/GitNow/commits/master.atom",
+            "refreshrate": 1200,
+            "live": true,
+            "user": "devedge",
+            "repo": "GitNow",
+            "lastpush": {
+                "date": "",
+                "hash": ""
+            }
+        },
+        inikulinineed: {
+            "ID": "inikulinineed",
+            "feedURL": "https://github.com/inikulin/ineed/commits/master.atom",
+            "refreshrate": 1200,
+            "live": false,
+            "user": "inikulin",
+            "repo": "ineed",
+            "lastpush": {
+                "date": "",
+                "hash": ""
+            }
+        }
+    };
 
     // Poll time is currently 20 minutes, but may be adjusted
     var polltime = 1200;
@@ -21,12 +48,12 @@
     // populate with live watchers from the config file,
     // and add new ones from the addFeed() function
     var livewatchers = {}; // an object containing a list of live watchers
-    var livefeedIDs = [];  // an array containing the IDs of all the live feeds
+    // var livefeedIDs = [];  // an array containing the IDs of all the live feeds
 
     // the unique ID is the username + reponame (github doesn't allow duplicate repos)
     // NEED TO REMOVE ANY SPECIAL CHARACTERS ('.', '_', '-', etc)
     // HOW TO HANDLE USERS WITH SPACES/SPECIAL CHARACTER IN THEIR NAME
-    var feedname;
+    var newfeed;
 
     function PollManager(configFile) {
         // if config file is specified, try to load it
@@ -35,11 +62,14 @@
         // if no config file specified and there is no feed 
         // file, generate a new one
 
+        // DEPRECATED?
+        // livefeedIDs = config.livefeeds;
     }
 
     PollManager.prototype.init = function init(cb) {
         // IF THERE IS AN INTERNET CONNECTION
         // start all the repos to watch, and call back (or event emit) when done
+        // return the feed ID so it can be used elsewhere
 
         // read the config file
         // find out what is running by checking the 'live' array contiaining feed IDs
@@ -59,17 +89,26 @@
         // generate a new feedname
         // make that feedname a copy of the watcher function
 
-        feed = genfeedurl.fromGitUrl(feedURL);
+        newfeed = genfeedurl.fromGitUrl(feedURL);
 
         // Initialize this new feed in the config file (need to do async fs save)
-        config[feed.ID] = {
-            ID: feed.ID,
-            feedurl: feed.url,
+        config[newfeed.ID] = {
+            ID: newfeed.ID,
+            feedurl: newfeed.url,
             refreshrate: polltime,
             live: true,
-            user: feed.username,
-            repo: feed.reponame
+            user: newfeed.username,
+            repo: newfeed.reponame
+            // latest push: {
+            //     date: '',
+            //     hash: '',
+            // }
         };
+
+        // add the feed id to the live feed arrays. These arrays keep track of what feeds
+        // to initialize at start time
+        // livefeeds.push(newfeed.ID);
+        config.livefeeds.push(newfeed.ID);
 
         // To reduce memory overhead and optimize speed, pass shared (const) references 
         // to the 'request' and 'notifier' modules (instead of 'require()' a new one per module).
@@ -86,12 +125,15 @@
     PollManager.prototype.pauseFeed = function pauseFeed(feedID) {
         // TODO
         livewatchers[feedID].kill();
+        // async save to disk here
     }
 
     // Add the watcher back to the live feed list 
     PollManager.prototype.resumeFeed = function resumeFeed(feedID) {
-        // TODO
+        // If the feed is not present in the livefeeds array
+        config.livefeeds.push(feedID);
         livewatchers[feedID].start();
+        // async save to disk here
     }
 
     // an example feed? maybe?
