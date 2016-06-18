@@ -68,7 +68,7 @@
         // if the watcher has already been started, throw an error?
         if (started !== false) {
             // throw some error
-            console.log('ERROR: Feed has already been started');
+            // console.log('ERROR: Feed has already been started');
         } else {
             // watch the 'feedURL' every 'refreshtime' amount
             watcherInterval = setInterval(function() {
@@ -85,11 +85,16 @@
         // if the watcher has already been killed, throw an error?
         if (started !== true) {
             // throw some error
-            console.log('ERROR: Feed has not been started');
+            // console.log('ERROR: Feed has not been started');
         } else {
             clearInterval(watcherInterval);
             started = false;
         }
+    }
+
+    // Manually force a recheck
+    Watcher.prototype.force = function force() {
+        pollFeed(feedURL);
     }
 
 
