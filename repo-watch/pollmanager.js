@@ -12,6 +12,7 @@
 
     // The application configuration. It is updated and saved locally as
     // JSON on major events (eg., just after adding/deleting a repo).
+    // EXAMPLE
     var config = {
         repos: ['devedgeGitNow', 'inikulinineed'],
         livefeeds: ['devedgeGitNow'],
@@ -135,6 +136,12 @@
         livewatchers[feedID].start();
         // async save to disk here
     }
+
+
+    // few other ideal methods:
+    // list all live feeds
+    // list all feeds
+
 
     // an example feed? maybe?
     // var feed = {
