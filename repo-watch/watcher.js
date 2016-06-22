@@ -127,6 +127,30 @@
         });
     }
 
+    // local private functions for handling the interval
+    // these are used when the adaptive watcher needs to change
+    // the watch times
+
+    function reset_time(newtime) {
+        if (watcherInterval !== null) {
+            if (started !== false) {
+
+                // stop the interval
+                clearInterval(watcherInterval);
+
+                // restart it with the new time
+                watcherInterval = setInterval(function() {
+                    pollFeed(feedURL);
+                }, newtime);
+            }
+        }
+    }
+
+
+
+
+    // Handlers for the event emitters
+
 
     // set up event emitters to handle different actions
     
