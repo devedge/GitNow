@@ -28,6 +28,21 @@
     if there are more pushes within that short time period, upgrade to a faster watch time (3rd level)?
         if there haven't been pushes within x time, fall all the way back to the 1st level?
 
+    FLUSHED OUT
+
+    first watch time: 20 min
+    if there was something within that 20min, upgrade to 10 min watch time
+        if there is something again within the next 10 min, upgrade to checking every 3? min
+            if there has been no updates after 4 tries at 3? min, downgrade back to watching 
+            every 10 min.
+
+        else watch for another 10min. if there is still nothing after the second attempt,
+        revert back to 20min.
+    else keep watching at 20 min.
+
+
+
+
     // usage:
 
     var Watcher = require('watcher');
