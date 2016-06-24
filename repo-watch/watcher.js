@@ -15,6 +15,8 @@
     var refreshtime;
     var feedURL;
 
+    // this is true if the last check was new
+    var lastupdate = false;
     var started = false;
 
     var name;
@@ -81,7 +83,7 @@
     Watcher.prototype.start = function start() {
 
         // if the watcher has already been started, throw an error?
-        if (started !== false) {
+        if (started === true) {
             // throw some error
             // console.log('ERROR: Feed has already been started');
         } else {
@@ -98,7 +100,7 @@
     Watcher.prototype.kill = function kill() {
 
         // if the watcher has already been killed, throw an error?
-        if (started !== true) {
+        if (started === false) {
             // throw some error
             // console.log('ERROR: Feed has not been started');
         } else {
@@ -118,22 +120,56 @@
 
         // Do a simple GET request for the feed
         // (do we want to send additional data, like headers?)
-        request(feedURL, function(err, resp, body) {
-            if(!err && (resp.statusCode === 200)) {
-                w_event.emit('response', body);
-            } else {
-                w_event.emit('error', err, resp);
-            }
-        });
+        // request(feedURL, function(err, resp, body) {
+        //     if(!err && (resp.statusCode === 200)) {
+        //         w_event.emit('response', body);
+        //     } else {
+        //         w_event.emit('error', err, resp);
+        //     }
+        // });
+
+        // Dummy code for testing
+        w_event.emit('response', 'exampledatainbody');
     }
 
     // local private functions for handling the interval
     // these are used when the adaptive watcher needs to change
     // the watch times
 
+    function adaptive_update(newtime, lastupdate) {
+        // if the last check had an update, then the watch time needs to be bumped up a level
+        //      if the level is the highest, don't bump up anymore
+        // if the last check did not have an update, then nothing done
+        // if the last two checks did not have an update, then drop down a level
+
+        // examples:
+        // 20 min interval, + an update
+        // interval bumped to 10 min
+
+        // 10 min interval, no update
+        // do nothing
+        // another 10 min interval, no update
+        // bump down to 20 min
+
+        // 20 min interval, + an update
+        // interval bumped to 10 min
+        // no update after 10 min, do nothing
+        // another update, bump interval to 3 min
+        // after 3 min, no update
+        // do nothing
+        // after another 3 min, no update
+        // again, do nothing
+        // another 3 min, no update
+        // downgrade back to 10 min (if there was any activity, it would stay at 3 min)
+
+        if (lastupdate) {
+
+        }
+    }
+
     function reset_time(newtime) {
         if (watcherInterval !== null) {
-            if (started !== false) {
+            if (started === true) {
 
                 // stop the interval
                 clearInterval(watcherInterval);
@@ -142,6 +178,12 @@
                 watcherInterval = setInterval(function() {
                     pollFeed(feedURL);
                 }, newtime);
+
+                // stupid, but if the user killed the watcher just before
+                // the previous operation, need to re-kill it
+                if (started === false) {
+                    clearInterval(watcherInterval);
+                }
             }
         }
     }
@@ -174,15 +216,33 @@
     });
 
     w_event.on('response', function (body) {
+
+        console.log('-- polling happened: ' + body);
+
         // from here, asynchronously parse the body to determine if there were any changes
         // if anything notable happened, use the emitter 'w_event' to handle
 
         // console.log('yup, working');
 
-        notifier.notify({
-            title: 'GitNow - ERROR: Repo not found',
-            message: 'The link location may have been mistyped'
-        });
+        // notifier.notify({
+        //     title: 'GitNow - ERROR: Repo not found',
+        //     message: 'The link location may have been mistyped'
+        // });
+
+        // test stuff
+        // if different
+        // notify
+        // handle new time
+        // if (t === 20) {
+        //     t = 10;
+        //     reset_time(t);
+        // } else if (t === 10 && ) {
+
+        // } else if (t === 3) {
+
+        // }
+
+
 
         // check for differences, probably with a hash since that will be quicker
         // if there are any, then handle them (with imported parser) and notify the application
