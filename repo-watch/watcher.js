@@ -19,6 +19,22 @@
     var lastupdate = false;
     var started = false;
 
+
+
+    var array = [1200, 600, 180];
+    // 20 min
+    // 10 min
+    // 3 min
+
+    var watchlevel = 0;
+    // level 0, last 2 checks had no updates
+    // level 1, the check before last had an update
+    // level 2, last check had an update
+
+    var watch_time = 1200;
+
+
+
     var name;
     var repo;
 
@@ -128,19 +144,92 @@
         //     }
         // });
 
-        // Dummy code for testing
+        // Dummy code for testings
         w_event.emit('response', 'exampledatainbody');
     }
 
     // local private functions for handling the interval
-    // these are used when the adaptive watcher needs to change
-    // the watch times
+    // these are used when the adaptive watcher needs to change the watch times
 
-    function adaptive_update(newtime, lastupdate) {
+    // call in pollFeed() after every call?
+    // or call after the results of the diff?
+    // @param updated - a boolean, true if the last check had an update and false otherwise
+    function adapt_interval(updated) {
         // if the last check had an update, then the watch time needs to be bumped up a level
         //      if the level is the highest, don't bump up anymore
         // if the last check did not have an update, then nothing done
         // if the last two checks did not have an update, then drop down a level
+
+        // Update the watch level
+        if (updated && (watchlevel < 2)) {
+            // the last check had an update & the level is 0 or 1
+            // elevate the watch level by one
+            watchlevel++;
+            
+        } else if (!updated && (watchlevel > 0)) {
+
+            // the last check did not have an update, and the level is 1 or 2
+            // decrease the watch level by one
+            watchlevel--;
+        }
+
+
+        // Depending on the watch level, adjust the interval time
+        switch(watchlevel) {
+            case 0:
+                // There haven't been any updates within the past two checks
+                // reset the time to the longest option in the array
+                reset_time(array[0]);
+                break;
+            
+            case 1:
+                // Nothing to do here, this is the buffer time
+                break;
+
+            case 2:
+                // The last check had an update, so reset to the highest level
+                reset_time(array[watchlevel]);
+                break;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        if (watchlevel === 0) {
+
+            // no updates within past two checks
+            // reset the time to the longest option in the array
+            reset_time(array[0]);
+
+        } else if (watchlevel === 1) {
+
+            // the check before last had an update
+            // downgrade the 
+
+
+        } else if (watchlevel === 2) {
+
+            // the last check had an update
+
+        }
 
         // examples:
         // 20 min interval, + an update
@@ -162,9 +251,6 @@
         // another 3 min, no update
         // downgrade back to 10 min (if there was any activity, it would stay at 3 min)
 
-        if (lastupdate) {
-
-        }
     }
 
     function reset_time(newtime) {
@@ -229,18 +315,12 @@
         //     message: 'The link location may have been mistyped'
         // });
 
-        // test stuff
-        // if different
-        // notify
-        // handle new time
-        // if (t === 20) {
-        //     t = 10;
-        //     reset_time(t);
-        // } else if (t === 10 && ) {
 
-        // } else if (t === 3) {
+        // if there was an update
+        // adapt_interval(true);
 
-        // }
+        // else if there was no update
+        // adapt_interval(false);
 
 
 
