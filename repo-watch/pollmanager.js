@@ -7,14 +7,18 @@
     // every time something gets initialized
     const request = require('request');
     const notifier = require('node-notifier');
-    const Watcher = require('watcher');
-    const genfeedurl = require('genfeedurl');
+    const Watcher = require('./watcher');
+    const genfeedurl = require('./genfeedurl');
+
+    const fs = require('fs');
 
     // The application configuration. It is updated and saved locally as
     // JSON on major events (eg., just after adding/deleting a repo).
     // EXAMPLE
     var config = {
-        repos: ['devedgeGitNow', 'inikulinineed'],
+        repos: [],
+        livefeeds: [],
+        /*repos: ['devedgeGitNow', 'inikulinineed'],
         livefeeds: ['devedgeGitNow'],
         numrepos: 2,
         devedgeGitNow: {
@@ -40,11 +44,11 @@
                 "date": "",
                 "hash": ""
             }
-        }
+        }*/
     };
 
     // Poll time is currently 20 minutes, but may be adjusted
-    var polltime = 1200;
+    // var polltime = 1200;
     
     // populate with live watchers from the config file,
     // and add new ones from the addFeed() function
@@ -56,7 +60,26 @@
     // HOW TO HANDLE USERS WITH SPACES/SPECIAL CHARACTER IN THEIR NAME
     var newfeed;
 
+    // configFile: '../app-data/app_config.json'
     function PollManager(configFile) {
+
+        // load the configuration file
+        try {
+            // confirm that the config file exists
+            fs.statSync(configFile).isFile();
+
+            // read the JSON object into a local variable
+            config = JSON.parse(fs.readFileSync(configFile, 'utf8'));
+            
+        } catch (e) {
+            // if it doesn't exist, create it
+            fs.writeFileSync(configFile, JSON.stringify(config));
+
+        }
+
+
+
+
         // if config file is specified, try to load it
         //      if there also another feed file, throw error
 
@@ -228,5 +251,7 @@
     // if application close is called, clear the entire array
     // if a feed is paused, remove it from the array
     // if a feed is resumed, add it back to the array
+
+    module.exports = PollManager;
 
 })();

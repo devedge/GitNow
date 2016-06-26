@@ -112,22 +112,17 @@
 
     function adapt_interval(updated) {
         if (updated) {
-
             if (watchlevel === 0) {
                 watchlevel = 1; // refresh the watcher here
                 reset_time(timeintervals[watchlevel]);
                 wait = true;
-
             } else if (watchlevel === 1) {
                 watchlevel = 2; // refresh the watcher here
                 reset_time(timeintervals[watchlevel]);
                 wait = true;
             }
-
         } else {
-
             if (watchlevel === 2) {
-
                 if (wait) {
                     wait = false;
                 } else {
@@ -135,9 +130,7 @@
                     reset_time(timeintervals[watchlevel]);
                     wait = true;
                 }
-
             } else if (watchlevel === 1) {
-
                 if (wait) {
                     wait = false;
                 } else {
@@ -175,6 +168,25 @@
 
 
 
+    w_event.on('error', function (err, resp) {
+
+    });
+
+
+    w_event.on('response', function (body) {
+
+        console.log('-- polled; watching: ' + timeintervals[watchlevel]);
+
+        // if there was an update
+        adapt_interval(true);
+
+        // else if there was no update
+        // adapt_interval(false);
+    });
+
+
+    w_event.on('notify', function() {
+    });
 
 
 
@@ -183,10 +195,7 @@
 
 
 
-
-
-
-
+    module.exports = Watcher;
 
 
 
@@ -299,34 +308,23 @@
 
     // set up event emitters to handle different actions
     
-    w_event.on('error', function (err, resp) {
-        var errortitle;
-        var message;
+        // var errortitle;
+        // var message;
 
-        if (resp) {
-            if (resp.statusCode === 404){
-                // errortitle = repo + ' - ERROR: Repo not found';
-                // message = 'The link location may have been mistyped';
-            }
-        }
+        // if (resp) {
+        //     if (resp.statusCode === 404){
+        //         // errortitle = repo + ' - ERROR: Repo not found';
+        //         // message = 'The link location may have been mistyped';
+        //     }
+        // }
         // depending on the status code sent out, return different error messages
         // eg., if 'resp.statusCode' is 404, return an error message about how the repo
         //      cannot be found, and double check spelling
 
         // try to find out if there is a connection error
         // if so, just display a message in the GUI about needing an internet conection
-        console.log(err);
-    });
+        // console.log(err);
 
-    w_event.on('response', function (body) {
-
-        console.log('-- polled; watching: ' + timeintervals[watchlevel]);
-
-        // if there was an update
-        adapt_interval(true);
-
-        // else if there was no update
-        // adapt_interval(false);
 
 
 
@@ -349,15 +347,10 @@
 
         // check for differences, probably with a hash since that will be quicker
         // if there are any, then handle them (with imported parser) and notify the application
-    });
-
-    w_event.on('notify', function() {
         // DONT DO THIS
         // to reduce overhead, import the notify module here
         // when the notification is done, set the value to 'null' so it will be garbage collected
-    });
 
 
-    module.exports = Watcher;
 
 })();
