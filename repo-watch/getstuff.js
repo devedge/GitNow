@@ -4,10 +4,10 @@ const notifier = require('node-notifier');
 const Watcher = require('./watcher.js');
 
 var url = 'https://github.com/devedge/GitNow/commits/master.atom';
-var time = 15;
+// var time = 15;
 var repolist = {};
 
-repolist.devedgeGitNow = new Watcher(url, time, request, notifier);
+repolist.devedgeGitNow = new Watcher(url, request, notifier);
 
 repolist.devedgeGitNow.start();
 

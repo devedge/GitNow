@@ -7,36 +7,214 @@
     var notifier;
     var request;
 
-    // global (within this module) event emitter
+    // event emitter for this module
     const EventEmitter = require('events');
     const w_event = new EventEmitter();
 
+    var localsettings = {};
     var watcherInterval;
+
+    var started = false;
     var refreshtime;
     var feedURL;
 
+    // variables for the adapt_interval() function
+    // 20 min, 10 min, 3 min
+    // var timeintervals = [1200000, 600000, 180000];
+    var timeintervals = [20000, 10000, 3000];
+    var watchlevel = 0;
+    var wait = true;
+
+
+    // Constructor function to initiialize a new repository to watch
+    // pass in time as seconds
+    function Watcher(url, r, n, err) {
+        // initialize a new repo watcher here
+        // need to ensure values here are valid?
+
+        feedURL = url;
+        // refreshtime = time * 1000;
+        refreshtime = timeintervals[0];
+        request = r;
+        notifier = n;
+
+        // do we still want to generate a unique id?
+    }
+
+    // Start the interval watcher (add an optional extra time argument?)
+    Watcher.prototype.start = function start() {
+
+        // if the watcher has already been started, throw an error?
+        if (started === true) {
+            // throw some error
+            // console.log('ERROR: Feed has already been started');
+        } else {
+            // watch the 'feedURL' every 'refreshtime' amount
+            watcherInterval = setInterval(function() {
+                pollFeed(feedURL, false);
+            }, refreshtime);
+
+            started = true;
+        }
+    }
+
+    // Kill the interval watcher
+    Watcher.prototype.kill = function kill() {
+
+        // if the watcher has already been killed, throw an error?
+        if (started === false) {
+            // throw some error
+            // console.log('ERROR: Feed has not been started');
+        } else {
+            clearInterval(watcherInterval);
+            started = false;
+        }
+    }
+
+    // Manually force a recheck
+    Watcher.prototype.force = function force() {
+        pollFeed(feedURL, true);
+    }
+
+
+
+
+
+
+
+
+
+
+    /* private function for requesting a url
+     *
+     * @param feedURL {string}
+     * @param forced {bool} true if the poll was called by the '.force()' function
+     *
+     */
+    function pollFeed(feedURL, forced) {
+
+
+        // Do a simple GET request for the feed
+        // (do we want to send additional data, like headers?)
+        // request(feedURL, function(err, resp, body) {
+        //     if(!err && (resp.statusCode === 200)) {
+        //         w_event.emit('response', body);
+        //     } else {
+        //         w_event.emit('error', err, resp);
+        //     }
+        // });
+
+        // Dummy code for testings
+        w_event.emit('response', 'exampledatainbody');
+    }
+
+
+
+    function adapt_interval(updated) {
+        if (updated) {
+
+            if (watchlevel === 0) {
+                watchlevel = 1; // refresh the watcher here
+                reset_time(timeintervals[watchlevel]);
+                wait = true;
+
+            } else if (watchlevel === 1) {
+                watchlevel = 2; // refresh the watcher here
+                reset_time(timeintervals[watchlevel]);
+                wait = true;
+            }
+
+        } else {
+
+            if (watchlevel === 2) {
+
+                if (wait) {
+                    wait = false;
+                } else {
+                    watchlevel = 1; // refresh the watcher here
+                    reset_time(timeintervals[watchlevel]);
+                    wait = true;
+                }
+
+            } else if (watchlevel === 1) {
+
+                if (wait) {
+                    wait = false;
+                } else {
+                    watchlevel = 0; // refresh the watcher here
+                    reset_time(timeintervals[watchlevel]);
+                    wait = true;
+                }
+            }
+        }
+    }
+
+
+
+    function reset_time(newtime) {
+        // if (watcherInterval !== null) {
+            // if (started === true) {
+
+        // stop the interval
+        clearInterval(watcherInterval);
+
+        // restart it with the new time
+        watcherInterval = setInterval(function() {
+            pollFeed(feedURL);
+        }, newtime);
+
+        // stupid, but if the user killed the watcher just before
+        // the previous operation, need to re-kill it
+        if (started === false) {
+            clearInterval(watcherInterval);
+        }
+
+            // }
+        // }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
     // this is true if the last check was new
-    var lastupdate = false;
-    var started = false;
+    // var lastupdate = false;
+    
 
 
 
-    var array = [1200, 600, 180];
+    // var array = [1200, 600, 180];
     // 20 min
     // 10 min
     // 3 min
 
-    var watchlevel = 0;
+    
     // level 0, last 2 checks had no updates
     // level 1, the check before last had an update
     // level 2, last check had an update
 
-    var watch_time = 1200;
+    // var watch_time = 1200;
 
 
 
-    var name;
-    var repo;
+    // var name;
+    // var repo;
 
     /*
 
@@ -74,79 +252,9 @@
 
     */
 
-    // Constructor function to initiialize a new repository to watch
-    // pass in time as seconds
-    function Watcher(url, time, r, n, err) {
-        // initialize a new repo here
-        // need to ensure values here are valid?
-
-        // make sure the time is greater than or equal to 1min 10sec
-        // default time 5-7 minutes
-
-        // verify the time is not too short
-        // verify that it is an integer
-        // verify that it is not too large
-
-        feedURL = url;
-        refreshtime = time * 1000;
-        request = r;
-        notifier = n;
-
-        // do we still want to generate a unique id?
-    }
-
-    // Start the interval watcher (add an optional extra time argument?)
-    Watcher.prototype.start = function start() {
-
-        // if the watcher has already been started, throw an error?
-        if (started === true) {
-            // throw some error
-            // console.log('ERROR: Feed has already been started');
-        } else {
-            // watch the 'feedURL' every 'refreshtime' amount
-            watcherInterval = setInterval(function() {
-                pollFeed(feedURL);
-            }, refreshtime);
-
-            started = true;
-        }
-    }
-
-    // Kill the interval watcher
-    Watcher.prototype.kill = function kill() {
-
-        // if the watcher has already been killed, throw an error?
-        if (started === false) {
-            // throw some error
-            // console.log('ERROR: Feed has not been started');
-        } else {
-            clearInterval(watcherInterval);
-            started = false;
-        }
-    }
-
-    // Manually force a recheck
-    Watcher.prototype.force = function force() {
-        pollFeed(feedURL);
-    }
 
 
-    // private function for requesting a url
-    function pollFeed(feedURL) {
 
-        // Do a simple GET request for the feed
-        // (do we want to send additional data, like headers?)
-        // request(feedURL, function(err, resp, body) {
-        //     if(!err && (resp.statusCode === 200)) {
-        //         w_event.emit('response', body);
-        //     } else {
-        //         w_event.emit('error', err, resp);
-        //     }
-        // });
-
-        // Dummy code for testings
-        w_event.emit('response', 'exampledatainbody');
-    }
 
     // local private functions for handling the interval
     // these are used when the adaptive watcher needs to change the watch times
@@ -154,125 +262,34 @@
     // call in pollFeed() after every call?
     // or call after the results of the diff?
     // @param updated - a boolean, true if the last check had an update and false otherwise
-    function adapt_interval(updated) {
-        // if the last check had an update, then the watch time needs to be bumped up a level
-        //      if the level is the highest, don't bump up anymore
-        // if the last check did not have an update, then nothing done
-        // if the last two checks did not have an update, then drop down a level
+    // function adapt_interval(updated) {
+    //     // if the last check had an update, then the watch time needs to be bumped up a level
+    //     //      if the level is the highest, don't bump up anymore
+    //     // if the last check did not have an update, then nothing done
+    //     // if the last two checks did not have an update, then drop down a level
 
-        // Update the watch level
-        if (updated && (watchlevel < 2)) {
-            // the last check had an update & the level is 0 or 1
-            // elevate the watch level by one
-            watchlevel++;
-            
-        } else if (!updated && (watchlevel > 0)) {
+    //     // examples:
+    //     // 20 min interval, + an update
+    //     // interval bumped to 10 min
 
-            // the last check did not have an update, and the level is 1 or 2
-            // decrease the watch level by one
-            watchlevel--;
-        }
+    //     // 10 min interval, no update
+    //     // do nothing
+    //     // another 10 min interval, no update
+    //     // bump down to 20 min
 
+    //     // 20 min interval, + an update
+    //     // interval bumped to 10 min
+    //     // no update after 10 min, do nothing
+    //     // another update, bump interval to 3 min
+    //     // after 3 min, no update
+    //     // do nothing
+    //     // after another 3 min, no update
+    //     // again, do nothing
+    //     // another 3 min, no update
+    //     // downgrade back to 10 min (if there was any activity, it would stay at 3 min)
 
-        // Depending on the watch level, adjust the interval time
-        switch(watchlevel) {
-            case 0:
-                // There haven't been any updates within the past two checks
-                // reset the time to the longest option in the array
-                reset_time(array[0]);
-                break;
-            
-            case 1:
-                // Nothing to do here, this is the buffer time
-                break;
+    // }
 
-            case 2:
-                // The last check had an update, so reset to the highest level
-                reset_time(array[watchlevel]);
-                break;
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        if (watchlevel === 0) {
-
-            // no updates within past two checks
-            // reset the time to the longest option in the array
-            reset_time(array[0]);
-
-        } else if (watchlevel === 1) {
-
-            // the check before last had an update
-            // downgrade the 
-
-
-        } else if (watchlevel === 2) {
-
-            // the last check had an update
-
-        }
-
-        // examples:
-        // 20 min interval, + an update
-        // interval bumped to 10 min
-
-        // 10 min interval, no update
-        // do nothing
-        // another 10 min interval, no update
-        // bump down to 20 min
-
-        // 20 min interval, + an update
-        // interval bumped to 10 min
-        // no update after 10 min, do nothing
-        // another update, bump interval to 3 min
-        // after 3 min, no update
-        // do nothing
-        // after another 3 min, no update
-        // again, do nothing
-        // another 3 min, no update
-        // downgrade back to 10 min (if there was any activity, it would stay at 3 min)
-
-    }
-
-    function reset_time(newtime) {
-        if (watcherInterval !== null) {
-            if (started === true) {
-
-                // stop the interval
-                clearInterval(watcherInterval);
-
-                // restart it with the new time
-                watcherInterval = setInterval(function() {
-                    pollFeed(feedURL);
-                }, newtime);
-
-                // stupid, but if the user killed the watcher just before
-                // the previous operation, need to re-kill it
-                if (started === false) {
-                    clearInterval(watcherInterval);
-                }
-            }
-        }
-    }
 
 
 
@@ -288,8 +305,8 @@
 
         if (resp) {
             if (resp.statusCode === 404){
-                errortitle = repo + ' - ERROR: Repo not found';
-                message = 'The link location may have been mistyped';
+                // errortitle = repo + ' - ERROR: Repo not found';
+                // message = 'The link location may have been mistyped';
             }
         }
         // depending on the status code sent out, return different error messages
@@ -303,7 +320,16 @@
 
     w_event.on('response', function (body) {
 
-        console.log('-- polling happened: ' + body);
+        console.log('-- polled; watching: ' + timeintervals[watchlevel]);
+
+        // if there was an update
+        adapt_interval(true);
+
+        // else if there was no update
+        // adapt_interval(false);
+
+
+
 
         // from here, asynchronously parse the body to determine if there were any changes
         // if anything notable happened, use the emitter 'w_event' to handle
@@ -316,11 +342,8 @@
         // });
 
 
-        // if there was an update
-        // adapt_interval(true);
+        
 
-        // else if there was no update
-        // adapt_interval(false);
 
 
 
