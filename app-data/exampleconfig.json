@@ -1,9 +1,9 @@
 {
     "devedgeGitNow": {
-        "ID": "devedgeGitNow",
+        // "ID": "devedgeGitNow",
         "feedurl": "https://github.com/devedge/GitNow/commits/master.atom",
-        "refreshrate": 1200,
-        "live": true,
+        // "refreshrate": 1200,
+        // "live": true,
         "user": "devedge",
         "repo": "GitNow",
         "lastpush": {

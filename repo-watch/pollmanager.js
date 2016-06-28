@@ -75,22 +75,27 @@
             // if it doesn't exist, create it
             fs.writeFileSync(configFile, JSON.stringify(config));
 
+            // what if the file isn't JSON? overwrite it and create another one?
+
         }
-
-
-
-
-        // if config file is specified, try to load it
-        //      if there also another feed file, throw error
-
-        // if no config file specified and there is no feed 
-        // file, generate a new one
 
         // DEPRECATED?
         // livefeedIDs = config.livefeeds;
     }
 
     PollManager.prototype.init = function init(cb) {
+
+        // For each of the live feeds, start the watchers
+        config.livefeeds.forEach(function (element) {
+
+            // make a new watcher
+            livewatchers[element] = new Watcher(config[element].feedurl, request, notifier);
+            // start it
+            livewatchers[element].start();
+
+            console.log('reponame: ' + element);
+            console.log('obj:' + config[element].feedurl);
+        });
         // IF THERE IS AN INTERNET CONNECTION
         // start all the repos to watch, and call back (or event emit) when done
         // return the feed ID so it can be used elsewhere
@@ -117,10 +122,10 @@
 
         // Initialize this new feed in the config file (need to do async fs save)
         config[newfeed.ID] = {
-            ID: newfeed.ID,
+            // ID: newfeed.ID,
             feedurl: newfeed.url,
-            refreshrate: polltime,
-            live: true,
+            // refreshrate: polltime,
+            // live: true,
             user: newfeed.username,
             repo: newfeed.reponame
             // latest push: {
@@ -136,7 +141,7 @@
 
         // To reduce memory overhead and optimize speed, pass shared (const) references 
         // to the 'request' and 'notifier' modules (instead of 'require()' a new one per module).
-        livewatchers[feed.ID] = new Watcher(feed.url, polltime, request, notifier);
+        livewatchers[feed.ID] = new Watcher(feed.url, /*polltime,*/ request, notifier);
         livewatchers[feed.ID].start();
     }
 
@@ -158,6 +163,13 @@
         config.livefeeds.push(feedID);
         livewatchers[feedID].start();
         // async save to disk here
+    }
+
+    PollManager.prototype.shutDown = function shutDown() {
+        
+        config.livefeeds.forEach(function(element) {
+            livewatchers[element].kill();
+        });
     }
 
 

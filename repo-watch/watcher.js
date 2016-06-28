@@ -104,6 +104,8 @@
         //     }
         // });
 
+        console.log('url: ' + feedURL);
+
         // Dummy code for testings
         w_event.emit('response', 'exampledatainbody');
     }
