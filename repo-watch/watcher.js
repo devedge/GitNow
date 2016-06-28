@@ -77,14 +77,6 @@
     }
 
 
-
-
-
-
-
-
-
-
     /* private function for requesting a url
      *
      * @param feedURL {string}

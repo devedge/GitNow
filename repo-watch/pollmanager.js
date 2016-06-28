@@ -84,6 +84,8 @@
     }
 
     PollManager.prototype.init = function init(cb) {
+        // IF THERE IS AN INTERNET CONNECTION
+        // start all the repos to watch, and call back (or event emit) when done
 
         // For each of the live feeds, start the watchers
         config.livefeeds.forEach(function (element) {
@@ -93,17 +95,10 @@
             // start it
             livewatchers[element].start();
 
-            console.log('reponame: ' + element);
-            console.log('obj:' + config[element].feedurl);
-        });
-        // IF THERE IS AN INTERNET CONNECTION
-        // start all the repos to watch, and call back (or event emit) when done
-        // return the feed ID so it can be used elsewhere
+            // force an immediate check
+            livewatchers[element].force();
 
-        // read the config file
-        // find out what is running by checking the 'live' array contiaining feed IDs
-        // populate the 'livewatchers' object
-        // iterate over all the watchers and start them
+        });
     }
 
     // have two poll times, regular and priority
