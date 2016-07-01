@@ -87,8 +87,12 @@
         // IF THERE IS AN INTERNET CONNECTION
         // start all the repos to watch, and call back (or event emit) when done
 
+        console.log('Watching Repos:');
+
         // For each of the live feeds, start the watchers
         config.livefeeds.forEach(function (element) {
+
+            console.log('-- ' + config[element].repo);
 
             // make a new watcher
             livewatchers[element] = new Watcher(config[element].feedurl, request, notifier);

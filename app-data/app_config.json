@@ -1,1 +1,1 @@
-{"repos":["devedgeGitNow"],"livefeeds":["devedgeGitNow"],"devedgeGitNow":{"feedurl":"https://github.com/devedge/GitNow/commits/master.atom"}}
+{"repos":["devedgeGitNow","electronelectron"],"livefeeds":["electronelectron"],"devedgeGitNow":{"feedurl":"https://github.com/devedge/GitNow/commits/master.atom","user":"devedge","repo":"GitNow","lastpush":{"date":""}},"electronelectron":{"feedurl":"https://github.com/electron/electron/commits/master.atom","user":"electron","repo":"electron","lastpush":{"date":""}}}

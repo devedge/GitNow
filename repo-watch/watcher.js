@@ -84,7 +84,33 @@
      *
      */
     function pollFeed(feedURL, forced) {
+        var FeedParser = require('feedparser');
 
+        var req = request(feedURL);
+        var feedparser = new FeedParser([]);
+
+        req.on('response', function (res) {
+            var stream = this;
+
+            if (res.statusCode != 200) return this.emit('error', new Error('Bad status code'));
+
+            stream.pipe(feedparser);
+        });
+
+        feedparser.on('error', function(error) {
+            // always handle errors 
+        });
+        feedparser.on('readable', function() {
+            // This is where the action is! 
+            var stream = this;
+             // **NOTE** the "meta" is always available in the context of the feedparser instance
+            var meta = this.meta; 
+            var item;
+         
+            while (item = stream.read()) {
+                console.log(item);
+            }
+        });
 
         // Do a simple GET request for the feed
         // (do we want to send additional data, like headers?)
@@ -96,10 +122,10 @@
         //     }
         // });
 
-        console.log('url: ' + feedURL);
+        console.log('polling url: ' + feedURL + ' -- ' + timeintervals[watchlevel]);
 
         // Dummy code for testings
-        w_event.emit('response', 'exampledatainbody');
+        w_event.emit('response', 'exampledatainbody', forced);
     }
 
 
@@ -167,12 +193,15 @@
     });
 
 
-    w_event.on('response', function (body) {
+    w_event.on('response', function (body, forced) {
 
-        console.log('-- polled; watching: ' + timeintervals[watchlevel]);
-
+        if (forced) {
+            adapt_interval(false);
+        } else {
+            adapt_interval(true);
+        }
         // if there was an update
-        adapt_interval(true);
+        // adapt_interval(true);
 
         // else if there was no update
         // adapt_interval(false);
