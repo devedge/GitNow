@@ -1,6 +1,8 @@
 # GitNow
 A cross-platform Github notification app
 
+Under Development
+
 ***
 
 [Developer information is in the wiki](https://github.com/devedge/GitNow/wiki)
